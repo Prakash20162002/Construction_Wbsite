@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import '@/styles/globals.css';
 import Navbar from '@/components/Navbar';
 import LoadingScreen from '@/components/LoadingScreen';
+import ContactPopup from '@/components/ContactPopup';
 
 
 export const metadata: Metadata = {
@@ -48,6 +49,7 @@ export default function RootLayout({
       </head>
       <body>
         <LoadingScreen />
+        <ContactPopup />
         <a href="#main-content" className="sr-only">Skip to main content</a>
         <Navbar />
         <main id="main-content">

@@ -33,12 +33,12 @@ const MVV = [
   {
     label: 'Mission',
     icon: '◈',
-    statement: 'To engineer and construct industrial structures that define India\'s manufacturing and infrastructure backbone — with uncompromising precision, safety, and speed.',
+    statement: "To engineer and construct industrial structures that define India's manufacturing and infrastructure backbone — with uncompromising precision, safety, and speed.",
   },
   {
     label: 'Vision',
     icon: '◎',
-    statement: 'To be South Asia\'s most trusted industrial engineering company by 2030 — known for delivering projects that push the boundaries of scale, complexity, and quality.',
+    statement: "To be South Asia's most trusted industrial engineering company — known for delivering projects that push the boundaries of scale, complexity, and quality.",
   },
   {
     label: 'Values',

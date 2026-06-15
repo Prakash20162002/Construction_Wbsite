@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { COMPANY, SERVICES, NAV_LINKS } from '@/data/content';
 import styles from './Footer.module.css';
@@ -47,7 +48,13 @@ export default function Footer() {
             {/* Brand */}
             <div className={styles.brand}>
               <div className={styles.logoMark} aria-hidden="true">
-                <span className={styles.logoB}>B</span>
+                <Image
+                  src="/logo.png"
+                  alt="Bhandari Enterprise Logo"
+                  width={140}
+                  height={44}
+                  style={{ objectFit: 'contain' }}
+                />
               </div>
               <div>
                 <div className={styles.brandName}>Bhandari Enterprise</div>

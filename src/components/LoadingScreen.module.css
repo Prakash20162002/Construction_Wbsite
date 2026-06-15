@@ -245,6 +245,32 @@
   text-transform: uppercase;
 }
 
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .logoWrap {
+    width: 160px;
+    height: 160px;
+  }
+  .tagline {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+  .bottomStrip {
+    flex-direction: column;
+    gap: var(--space-2);
+    bottom: var(--space-6);
+  }
+  .bottomDivider {
+    display: none;
+  }
+  .bottomBrand {
+    font-size: 10px;
+  }
+  .bottomSub {
+    font-size: 9px;
+  }
+}
+
 /* ─── REDUCED MOTION ────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .logo, .logoWrap { animation: none; }
