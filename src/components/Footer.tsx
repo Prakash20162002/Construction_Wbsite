@@ -10,36 +10,6 @@ export default function Footer() {
   return (
     <footer className={styles.footer} role="contentinfo">
 
-      {/* ── CTA BANNER ───────────────────────────────────────── */}
-      <div className={styles.ctaBanner}>
-        <div className="container container--content">
-          <div className={styles.ctaInner}>
-            <div>
-              <h2 className={styles.ctaHeading}>
-                Ready to Build Something
-                <span className={styles.ctaAccent}> Extraordinary?</span>
-              </h2>
-              <p className={styles.ctaText}>
-                Partner with North India&apos;s leading industrial engineering company.
-              </p>
-            </div>
-            <div className={styles.ctaActions}>
-              <Link href="/contact" className="btn btn--primary btn--xl" id="footer-cta">
-                Get a Free Quote
-              </Link>
-              <a
-                href={`tel:${COMPANY.phone.replace(/\s/g, '')}`}
-                className="btn btn--secondary btn--xl"
-                id="footer-phone"
-              >
-                <Phone size={18} aria-hidden="true" />
-                {COMPANY.phone}
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* ── MAIN FOOTER ──────────────────────────────────────── */}
       <div className={styles.main}>
         <div className="container container--content">

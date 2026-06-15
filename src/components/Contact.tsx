@@ -11,6 +11,8 @@ export default function Contact() {
     name: '', company: '', email: '', phone: '', service: '', message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,10 +35,30 @@ export default function Contact() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate submission
-    setTimeout(() => setSubmitted(true), 500);
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to send enquiry. Please try again.');
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err.message || 'Something went wrong. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -140,6 +162,19 @@ export default function Contact() {
                 noValidate
                 aria-label="Contact enquiry form"
               >
+                {error && (
+                  <div style={{
+                    padding: '12px 16px',
+                    background: 'rgba(224, 36, 36, 0.1)',
+                    border: '1px solid rgba(224, 36, 36, 0.2)',
+                    borderRadius: '6px',
+                    color: '#f8b4b4',
+                    fontSize: '14px',
+                    gridColumn: '1 / -1',
+                  }}>
+                    {error}
+                  </div>
+                )}
                 <div className={styles.formRow}>
                   <div className={styles.field}>
                     <label htmlFor="name" className={styles.label}>Full Name *</label>
@@ -237,10 +272,17 @@ export default function Contact() {
                 <button
                   type="submit"
                   className={`btn btn--primary btn--lg btn--full ${styles.submitBtn}`}
+                  disabled={loading}
                   id="contact-submit"
                 >
-                  Send Enquiry
-                  <Send size={18} aria-hidden="true" />
+                  {loading ? (
+                    <>Sending Enquiry…</>
+                  ) : (
+                    <>
+                      Send Enquiry
+                      <Send size={18} aria-hidden="true" />
+                    </>
+                  )}
                 </button>
 
                 <p className={styles.formNote}>

@@ -43,6 +43,7 @@ export default function ContactClient() {
   const [form, setForm] = useState<FormData>(INITIAL);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -53,10 +54,27 @@ export default function ContactClient() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    // Simulate API call
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to submit. Please try again.');
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err.message || 'Something went wrong. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -109,6 +127,20 @@ export default function ContactClient() {
                   <h2 className={styles.formTitle}>Project Enquiry Form</h2>
                   <p className={styles.formSub}>All fields marked * are required.</p>
                 </div>
+
+                {error && (
+                  <div style={{
+                    margin: '0 var(--space-10) var(--space-4)',
+                    padding: '12px 16px',
+                    background: 'rgba(224, 36, 36, 0.1)',
+                    border: '1px solid rgba(224, 36, 36, 0.2)',
+                    borderRadius: '6px',
+                    color: '#f8b4b4',
+                    fontSize: '14px',
+                  }}>
+                    {error}
+                  </div>
+                )}
 
                 {/* Row 1: Name + Company */}
                 <div className={styles.row2}>

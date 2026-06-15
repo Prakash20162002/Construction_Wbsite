@@ -210,9 +210,10 @@
 .bottomStrip {
   position: absolute;
   bottom: var(--space-8);
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: var(--space-5);
   white-space: nowrap;
@@ -246,7 +247,7 @@
 }
 
 /* ─── RESPONSIVE ────────────────────────────────────────────── */
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   .logoWrap {
     width: 160px;
     height: 160px;
@@ -260,8 +261,8 @@
     gap: var(--space-2);
     bottom: var(--space-6);
     white-space: normal;
-    width: 90%;
     text-align: center;
+    padding: 0 var(--space-4);
   }
   .bottomDivider {
     display: none;

@@ -9,6 +9,8 @@ export default function ContactPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // Check if dismissed or submitted in this session
@@ -41,13 +43,40 @@ export default function ContactPopup() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setIsOpen(false);
-      sessionStorage.setItem('popup_dismissed', '1');
-    }, 2000);
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          phone: form.phone,
+          email: form.email || 'no-email@bhandarienterprise.com', // Fallback email
+          message: form.message || 'Callback Request from Popup',
+          service: 'Callback Request',
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to submit. Please try again.');
+      }
+
+      setSubmitted(true);
+      setTimeout(() => {
+        setIsOpen(false);
+        sessionStorage.setItem('popup_dismissed', '1');
+      }, 3000);
+    } catch (err: any) {
+      setError(err.message || 'Something went wrong.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -72,6 +101,20 @@ export default function ContactPopup() {
               <h3 id="popup-title" className={styles.title}>Let's Build Together</h3>
               <p className={styles.subtitle}>Leave your details and our project engineer will get in touch with you.</p>
             </div>
+
+            {error && (
+              <div style={{
+                padding: '10px 12px',
+                background: 'rgba(224, 36, 36, 0.1)',
+                border: '1px solid rgba(224, 36, 36, 0.2)',
+                borderRadius: '6px',
+                color: '#f8b4b4',
+                fontSize: '12px',
+                textAlign: 'center',
+              }}>
+                {error}
+              </div>
+            )}
 
             <div className={styles.field}>
               <label htmlFor="popup-name" className={styles.label}>Full Name *</label>
@@ -127,8 +170,8 @@ export default function ContactPopup() {
               />
             </div>
 
-            <button type="submit" className="btn btn--primary btn--full">
-              Request Call Back
+            <button type="submit" className="btn btn--primary btn--full" disabled={loading}>
+              {loading ? 'Submitting…' : 'Request Call Back'}
               <Send size={16} />
             </button>
 
