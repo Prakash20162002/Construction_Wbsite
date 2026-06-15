@@ -54,7 +54,7 @@ export default function About() {
             <div>
               <h2 className={`reveal ${styles.heading}`}>
                 Building India's Industrial Backbone
-                <span className={styles.headingAccent}>Since 1998</span>
+                <span className={styles.headingAccent}>Since 2006</span>
               </h2>
             </div>
             <div className={`reveal ${styles.headerText}`}>

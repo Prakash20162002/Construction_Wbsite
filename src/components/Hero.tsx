@@ -78,7 +78,7 @@ export default function Hero() {
             {[
               'Quality Certified',
               '26+ Years Established',
-              '850+ Projects Delivered',
+              '50+ Projects Delivered',
             ].map((pill) => (
               <span key={pill} className={styles.pill}>{pill}</span>
             ))}

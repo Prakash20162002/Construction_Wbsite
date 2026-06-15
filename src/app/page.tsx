@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Bhandari Enterprise — Industrial Engineering, Steel Fabrication & Construction',
-  description: "North India's premier industrial engineering company delivering steel fabrication, structural erection, manufacturing and civil construction for industrial infrastructure projects since 1998.",
+  description: "North India's premier industrial engineering company delivering steel fabrication, structural erection, manufacturing and civil construction for industrial infrastructure projects since 2006.",
 };
 
 export default function HomePage() {
