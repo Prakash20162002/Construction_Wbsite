@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { CheckCircle, Users, Target, Hammer } from 'lucide-react';
-import { CERTIFICATIONS } from '@/data/content';
+import { Users, Target, Hammer } from 'lucide-react';
 import styles from './About.module.css';
 
 const pillars = [
@@ -61,16 +60,12 @@ export default function About() {
             <div className={`reveal ${styles.headerText}`}>
               <p>
                 For over two decades, Bhandari Enterprise has been the trusted partner
-                for India's largest industrial groups. We combine precision engineering
-                with industrial-scale manufacturing capability to deliver structures
-                that define infrastructure.
+                for India's largest industrial groups — combining precision engineering
+                with industrial-scale manufacturing capability from our state-of-the-art
+                facility in Konnagar, Hooghly, serving sectors across petrochemical,
+                power, logistics and civil infrastructure.
               </p>
-              <p>
-                From our state-of-the-art fabrication yard in Konnagar, Hooghly, we serve
-                clients across petrochemical, power, logistics, manufacturing, and
-                civil infrastructure sectors.
-              </p>
-              <a href="#contact" className="btn btn--primary" style={{ marginTop: 'var(--space-6)' }}>
+              <a href="#contact" className="btn btn--primary" style={{ marginTop: 'var(--space-6)', alignSelf: 'flex-start' }}>
                 Work With Us
               </a>
             </div>
@@ -90,28 +85,6 @@ export default function About() {
               <p className={styles.pillarDesc}>{p.desc}</p>
             </div>
           ))}
-        </div>
-
-        <div className="divider" style={{ margin: 'var(--space-16) 0' }} />
-
-        {/* Certifications */}
-        <div className={styles.certsSection} id="certifications">
-          <div className="reveal">
-            <span className="overline">Quality & Safety Certifications</span>
-            <h3 className={styles.certsHeading}>Our Standards & Compliance</h3>
-          </div>
-          <div className={`${styles.certsGrid} reveal-group`}>
-            {CERTIFICATIONS.map((cert) => (
-              <div key={cert.code} className={`reveal ${styles.certCard}`}>
-                <CheckCircle size={20} className={styles.certCheck} aria-hidden="true" />
-                <div>
-                  <div className={styles.certCode}>{cert.code}</div>
-                  <div className={styles.certTitle}>{cert.title}</div>
-                  <div className={styles.certBody}>{cert.body}</div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

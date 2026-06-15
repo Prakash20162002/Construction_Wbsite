@@ -191,14 +191,37 @@
     gap: 1px;
   }
 
+  .card {
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .heading {
+    font-size: var(--text-h3);
+  }
+
+  .subheading {
+    font-size: var(--text-base);
+  }
+
   .bottomCta {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-6);
+    padding: var(--space-8);
   }
 
   .bottomCta .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .header {
+    margin-bottom: var(--space-10);
+  }
+}
+
+@media (max-width: 479px) {
+  .card {
+    padding: var(--space-6);
   }
 }

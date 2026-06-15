@@ -9,6 +9,7 @@ import { COMPANY } from '@/data/content';
 import styles from './Navbar.module.css';
 
 const NAV_LINKS = [
+  { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   {
     label: 'Capabilities',

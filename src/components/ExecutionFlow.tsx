@@ -12,7 +12,7 @@ const STAGES = [
     title: 'Manufacturing',
     headline: 'Industrial-Grade Manufacturing',
     description:
-      'Production of industrial components, structural members, steel assemblies and custom engineered products to ASME, IS and client-specific standards — with complete documentation from material test reports to final inspection certificates.',
+      'Production of structural members, steel assemblies, pressure vessels and custom engineered products to ASME, IS and client-specific standards — with full documentation from MTRs to final inspection certificates.',
     tags: ['Structural Members', 'Pressure Vessels', 'Equipment Skids', 'Custom Assemblies'],
     image: '/stage-manufacturing.jpg',
     imageAlt: 'Modern industrial manufacturing facility with CNC machines and robotic welding arms',
@@ -24,7 +24,7 @@ const STAGES = [
     title: 'Fabrication',
     headline: 'Precision Steel Fabrication',
     description:
-      'Fabrication of structural steel, pipe systems, industrial platforms and heavy engineering structures using CNC plasma/flame cutting, MIG, TIG, SAW and FCAW welding — all inspected to IS:800, AISC 360 and AWS D1.1 requirements.',
+      'Structural steel, pipe systems, industrial platforms and heavy engineering structures fabricated using CNC plasma/flame cutting, MIG, TIG, SAW and FCAW welding — all inspected to IS:800, AISC 360 and AWS D1.1.',
     tags: ['Structural Steel', 'Pipe Systems', 'Industrial Platforms', 'Heavy Sections'],
     image: '/stage-fabrication.jpg',
     imageAlt: 'Steel fabrication workshop with welding sparks and overhead cranes',
@@ -36,7 +36,7 @@ const STAGES = [
     title: 'Erection',
     headline: 'On-Site Industrial Erection',
     description:
-      'On-site erection and installation of steel structures, industrial plants, equipment and pipe racks — with crane-assisted heavy lifts up to 50MT, safety-certified crews, and 8 simultaneous active project sites across India.',
+      'Erection of steel structures, industrial plants, equipment and pipe racks — with crane-assisted heavy lifts up to 50MT, safety-certified crews, across 8 simultaneous active project sites across India.',
     tags: ['PEB Erection', 'Plant Structures', 'Pipe Racks', 'Heavy Lift'],
     image: '/stage-erection.jpg',
     imageAlt: 'Industrial steel erection with tower cranes at golden hour',
@@ -48,7 +48,7 @@ const STAGES = [
     title: 'Civil Construction',
     headline: 'Industrial Civil Works',
     description:
-      'Industrial buildings, RCC foundations, piling, hard-stand flooring and infrastructure development — executed as a fully integrated civil scope to IS:456, IS:2911 and site-specific engineering requirements.',
+      'Industrial buildings, RCC foundations, piling, hard-stand flooring and infrastructure — executed as an integrated civil scope to IS:456, IS:2911 and site-specific engineering requirements.',
     tags: ['RCC Structures', 'Foundations & Piling', 'Industrial Flooring', 'Turnkey Civil'],
     image: '/stage-civil.jpg',
     imageAlt: 'Large industrial civil construction site with concrete pouring and cranes',

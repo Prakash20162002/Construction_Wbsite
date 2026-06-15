@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, ChevronRight } from 'lucide-react';
 import PageHero from '@/components/PageHero';
@@ -20,6 +21,7 @@ const ALL_PROJECTS = [
     year: '2024',
     scaleRange: '>1000',
     client: 'National Logistics Corporation',
+    image: '/proj-industrial-bldg.jpg',
     summary: 'Design and erection of a 28,000 sqm multi-bay logistics warehouse with 12m clear height, 30T EOT crane provision, and insulated roofing system — completed 3 weeks ahead of schedule.',
     highlights: ['28,000 sqm covered area', '1,200 MT structural steel', '3 weeks ahead of schedule', 'Zero safety incidents'],
     featured: true,
@@ -36,6 +38,7 @@ const ALL_PROJECTS = [
     year: '2024',
     scaleRange: '500-1000',
     client: 'Automotive Components Ltd',
+    image: '/stage-manufacturing.jpg',
     summary: 'Full supply-and-erect PEB project for an automotive components manufacturer. Included mezzanine levels, overhead crane bays, and pre-engineered office block.',
     highlights: ['15,000 sqm factory floor', '680 MT steel', 'Mezzanine + crane bays', 'IS:800 compliant design'],
     featured: false,
@@ -52,6 +55,7 @@ const ALL_PROJECTS = [
     year: '2023',
     scaleRange: '500-1000',
     client: 'ChemProcess India Ltd',
+    image: '/proj-pipe-rack.jpg',
     summary: 'Multi-level process plant structure including pipe racks, equipment platforms, access stairs, and pressure vessel support frames for a large chemical manufacturing facility.',
     highlights: ['6-level process structure', '940 MT fabricated', 'ASME pressure vessels', 'Corrosion-resistant coatings'],
     featured: false,
@@ -68,6 +72,7 @@ const ALL_PROJECTS = [
     year: '2023',
     scaleRange: '>1000',
     client: 'E-Commerce Logistics Pvt Ltd',
+    image: '/proj-infrastructure.jpg',
     summary: 'Two-phase EPC delivery of a mega-distribution hub. Phase I: civil, foundations, and ground slab. Phase II: steel superstructure and building envelope across 42,000 sqm.',
     highlights: ['42,000 sqm — 2 phases', '1,800 MT structural steel', 'Full EPC contract', '18-month delivery'],
     featured: false,
@@ -84,6 +89,7 @@ const ALL_PROJECTS = [
     year: '2022',
     scaleRange: '>1000',
     client: 'State Power Generation Corp',
+    image: '/proj-plant-erection.jpg',
     summary: 'Complete structural steel supporting framework for a 660 MW thermal power plant — including turbine hall, boiler house structure, coal bunker support, and ESP housing.',
     highlights: ['2,200 MT steel fabricated', '660 MW plant support', 'Turbine + boiler structures', 'Corrosion protection system'],
     featured: false,
@@ -100,6 +106,7 @@ const ALL_PROJECTS = [
     year: '2022',
     scaleRange: '500-1000',
     client: 'AgroFreeze Storage Ltd',
+    image: '/stage-civil.jpg',
     summary: 'End-to-end civil and structural package for a multi-chamber cold storage facility with controlled atmosphere rooms, solar-ready roofing, and dock leveller provisions.',
     highlights: ['18,500 sqm facility', 'CA room construction', 'Solar-ready roof structure', 'Grade A cold storage'],
     featured: false,
@@ -116,6 +123,7 @@ const ALL_PROJECTS = [
     year: '2022',
     scaleRange: '<500',
     client: 'Food Corporation of India',
+    image: '/stage-erection.jpg',
     summary: 'Design and construction of eight concrete grain storage silos each with 1,000 MT capacity, including aeration systems, extraction conveyors, and site civil works.',
     highlights: ['8,000 MT total storage', 'FCI government project', 'Aeration + extraction', 'Phased delivery'],
     featured: false,
@@ -132,6 +140,7 @@ const ALL_PROJECTS = [
     year: '2023',
     scaleRange: '<500',
     client: 'PharmaBuild Infrastructure Ltd',
+    image: '/stage-fabrication.jpg',
     summary: 'Precision civil and structural package for a GMP-compliant pharmaceutical manufacturing block. Included cleanroom slab, epoxy flooring, MEP-embedded civil works, and false ceiling provisions.',
     highlights: ['GMP-compliant structure', 'Epoxy flooring system', 'Cleanroom slab accuracy ±2mm', 'WHO/GMP compliant'],
     featured: false,
@@ -254,9 +263,17 @@ export default function ProjectsPage() {
               <div className={styles.projectGrid} role="list">
                 {shown.map((project) => (
                   <article key={project.id} className={styles.projectCard} role="listitem">
-                    {/* Visual placeholder */}
-                    <div className={styles.cardVisual} aria-hidden="true">
-                      <div className={styles.cardPattern} />
+                    {/* Project Image */}
+                    <div className={styles.cardVisual}>
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                        className={styles.cardImage}
+                        quality={80}
+                      />
+                      <div className={styles.cardImageOverlay} />
                       <span className={styles.cardVisualLabel}>{project.category}</span>
                       <span className={styles.cardYear}>{project.year}</span>
                     </div>

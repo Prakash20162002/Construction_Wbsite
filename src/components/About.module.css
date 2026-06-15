@@ -147,6 +147,10 @@
   .certsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .pillars {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 767px) {
@@ -161,5 +165,18 @@
 
   .certsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .certsHeading {
+    font-size: var(--text-h4);
+    margin-bottom: var(--space-6);
+  }
+
+  .pillar {
+    padding: var(--space-6);
+  }
+
+  .certCard {
+    padding: var(--space-5);
   }
 }

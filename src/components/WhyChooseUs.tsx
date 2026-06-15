@@ -8,19 +8,19 @@ const FEATURES = [
   {
     icon: Cpu,
     title: 'End-To-End Execution',
-    desc: 'Single point of responsibility from manufacturing through final commissioning — no subcontracting critical scopes.',
+    desc: 'Single point of responsibility from manufacturing through commissioning — no subcontracting of critical scopes.',
     accent: true,
   },
   {
     icon: HardHat,
     title: 'Skilled Workforce',
-    desc: 'Over 400 certified engineers, welders, and erection specialists with domain expertise in heavy industrial projects.',
+    desc: '400+ certified engineers, welders, and erection specialists with heavy industrial domain expertise.',
     accent: false,
   },
   {
     icon: Clock4,
-    title: 'Timely Project Delivery',
-    desc: 'Structured project management with milestone tracking, daily reporting, and proactive risk mitigation.',
+    title: 'On-Time Delivery',
+    desc: 'Structured project management with milestone tracking, daily progress reports, and proactive risk mitigation.',
     accent: false,
   },
   {
@@ -32,13 +32,13 @@ const FEATURES = [
   {
     icon: Wrench,
     title: '26+ Years Experience',
-    desc: 'Deep industrial domain knowledge accumulated since 1998 across 850+ projects in diverse heavy industry sectors.',
+    desc: 'Deep domain knowledge accumulated since 1998 across 850+ industrial projects nationwide.',
     accent: false,
   },
   {
     icon: Shield,
-    title: 'Safety Compliance',
-    desc: 'Zero-compromise safety culture with mandatory toolbox talks and PTW systems on every active site.',
+    title: 'Safety First',
+    desc: 'Zero-compromise safety culture with mandatory toolbox talks and PTW systems on every site.',
     accent: false,
   },
 ] as const;

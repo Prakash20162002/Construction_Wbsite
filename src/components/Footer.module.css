@@ -334,4 +334,23 @@
   .ctaHeading {
     font-size: var(--text-h3);
   }
+
+  .ctaBanner {
+    padding: var(--space-10) 0;
+  }
+}
+
+@media (max-width: 479px) {
+  .ctaHeading {
+    font-size: var(--text-h4);
+  }
+
+  .ctaText {
+    font-size: var(--text-base);
+  }
+
+  .legal {
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
 }

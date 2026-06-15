@@ -17,37 +17,39 @@
 }
 
 .headerInner {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-16);
-  align-items: end;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
 }
 
 .sectionTitle {
-  font-size: clamp(40px, 5.5vw, 72px);
+  font-size: clamp(36px, 5vw, 64px);
   font-weight: 900;
   color: var(--color-white);
   text-transform: uppercase;
   letter-spacing: var(--tracking-tight);
   line-height: 1.0;
-  margin-top: var(--space-5);
-  white-space: nowrap;
+  margin-top: var(--space-4);
 }
 
 .titleAccent { color: var(--color-accent); }
 
 .headerRight {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-8);
   padding-bottom: 4px;
-  max-width: 600px;
+  max-width: 100%;
+  flex-wrap: wrap;
 }
 
 .sectionSub {
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   color: var(--color-navy-300);
   line-height: var(--leading-relaxed);
+  max-width: 520px;
 }
 
 .viewAll {
@@ -433,18 +435,27 @@
 }
 
 @media (max-width: 1023px) {
-  .headerInner { grid-template-columns: 1fr; }
-  .sectionTitle { white-space: normal; }
   .featuredCard { grid-template-columns: 1fr; }
-  .featuredImg { min-height: 320px; }
+  .featuredImg { min-height: 300px; }
   .ctaInner { flex-direction: column; align-items: flex-start; }
   .ctaText { flex-direction: column; gap: var(--space-2); }
+  .headerRight { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 767px) {
   .projectGrid { grid-template-columns: 1fr; }
-  .featuredContent { padding: var(--space-8); }
-  .ctaNum { font-size: 40px; }
+  .featuredContent { padding: var(--space-6); }
+  .ctaNum { font-size: 36px; }
+  .ctaInner { gap: var(--space-6); }
+  .featuredImg { min-height: 240px; }
+  .featuredTitle { font-size: clamp(20px, 5vw, 28px); }
+  .header { padding: var(--section-gap-md) 0 var(--space-8); }
+  .ctaBand { padding: var(--space-8) 0; }
+}
+
+@media (max-width: 479px) {
+  .cardImg { height: 180px; }
+  .cardContent { padding: var(--space-5); }
 }
 
 @media (prefers-reduced-motion: reduce) {

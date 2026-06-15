@@ -44,22 +44,21 @@
 }
 
 .headerInner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
-  align-items: end;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
 }
 
 .headerLeft { }
 
 .sectionTitle {
-  font-size: clamp(40px, 5vw, 72px);
+  font-size: clamp(36px, 5vw, 64px);
   font-weight: 900;
   color: var(--color-white);
   text-transform: uppercase;
   letter-spacing: var(--tracking-tight);
   line-height: 1.0;
-  margin-top: var(--space-5);
+  margin-top: var(--space-4);
   margin-bottom: 0;
 }
 
@@ -69,13 +68,15 @@
 
 .headerRight {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
   gap: var(--space-8);
-  padding-bottom: 4px;
+  flex-wrap: wrap;
 }
 
 .sectionSub {
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   color: var(--color-navy-300);
   line-height: var(--leading-relaxed);
   max-width: 520px;
@@ -91,6 +92,7 @@
   color: var(--color-accent);
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  flex-shrink: 0;
 }
 
 .oneLinerLine {
@@ -497,14 +499,14 @@
 }
 
 @media (max-width: 1023px) {
-  .headerInner { grid-template-columns: 1fr; }
+  .headerRight { flex-direction: column; align-items: flex-start; }
   .sectionSub { max-width: 100%; }
 
   .spine { display: none; }
 
   .stage {
     grid-template-columns: 1fr;
-    grid-template-rows: 340px auto;
+    grid-template-rows: 320px auto;
     min-height: auto;
     direction: ltr;
   }
@@ -538,15 +540,36 @@
 }
 
 @media (max-width: 767px) {
-  .stage { grid-template-rows: 260px auto; }
+  .stage { grid-template-rows: 220px auto; }
 
   .imageLabelTitle { font-size: var(--text-h4); }
 
   .stageNumLarge { display: none; }
 
-  .stageHeadline { font-size: 22px; }
+  .stageHeadline { font-size: 20px; }
 
-  .footerMessage { font-size: 20px; }
+  .stageDesc { font-size: var(--text-sm); }
+
+  .content { padding: var(--space-8) var(--space-6); }
+
+  .footerMessage { font-size: 18px; }
+
+  .footerInner { gap: var(--space-6); }
+
+  .header { padding: var(--section-gap-md) 0; }
+
+  .statBadge {
+    top: var(--space-4);
+    right: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+@media (max-width: 479px) {
+  .stage { grid-template-rows: 180px auto; }
+  .imageLabel { padding: var(--space-5); }
+  .imageLabel .imageLabelTitle { font-size: var(--text-h5); }
+  .statBadge { display: none; }
 }
 
 /* Reduced motion */

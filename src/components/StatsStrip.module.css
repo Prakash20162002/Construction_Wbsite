@@ -197,8 +197,15 @@
 
 @media (max-width: 599px) {
   .grid { grid-template-columns: 1fr 1fr; }
-  .statCard { padding: var(--space-8) var(--space-6); }
-  .statNum { font-size: clamp(48px, 12vw, 72px); }
+  .statCard { padding: var(--space-6) var(--space-5); }
+  .statNum { font-size: clamp(40px, 10vw, 64px); }
+  .statLabel { font-size: var(--text-base); }
+  .tagline { display: none; }
+}
+
+@media (max-width: 400px) {
+  .grid { grid-template-columns: 1fr; }
+  .statNum { font-size: clamp(48px, 14vw, 72px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
