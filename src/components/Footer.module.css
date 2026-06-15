@@ -1,0 +1,337 @@
+.footer {
+  background: var(--color-navy-950);
+  border-top: 1px solid var(--color-border-dark);
+}
+
+/* ─── CTA BANNER ────────────────────────────────────────────── */
+.ctaBanner {
+  background: var(--color-navy-900);
+  border-bottom: 1px solid var(--color-border-dark);
+  padding: var(--space-16) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaBanner::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-accent);
+}
+
+.ctaInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.ctaHeading {
+  font-size: var(--text-h2);
+  color: var(--color-white);
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+  letter-spacing: var(--tracking-tight);
+}
+
+.ctaAccent {
+  color: var(--color-accent);
+}
+
+.ctaText {
+  font-size: var(--text-lg);
+  color: var(--color-navy-300);
+}
+
+.ctaActions {
+  display: flex;
+  gap: var(--space-4);
+  flex-shrink: 0;
+}
+
+/* ─── MAIN FOOTER ───────────────────────────────────────────── */
+.main {
+  padding: var(--space-16) 0 var(--space-12);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-12);
+}
+
+/* ─── BRAND COL ─────────────────────────────────────────────── */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.logoMark {
+  width: 44px;
+  height: 44px;
+  background: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logoB {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--color-white);
+  line-height: 1;
+}
+
+.brandName {
+  font-family: var(--font-heading);
+  font-size: var(--text-h5);
+  font-weight: 800;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.brandTagline {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.brandDesc {
+  font-size: var(--text-sm);
+  color: var(--color-navy-400);
+  line-height: var(--leading-relaxed);
+  max-width: 320px;
+}
+
+.brandContact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-navy-300);
+  text-decoration: none;
+  transition: color var(--duration-fast);
+}
+
+.contactLink:hover {
+  color: var(--color-accent);
+}
+
+/* ─── LINK COLUMNS ──────────────────────────────────────────── */
+.col { }
+
+.colHeading {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-navy-400);
+  letter-spacing: var(--tracking-super);
+  text-transform: uppercase;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-dark);
+}
+
+.linkList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footerLink {
+  font-size: var(--text-sm);
+  color: var(--color-navy-300);
+  text-decoration: none;
+  transition: color var(--duration-fast);
+  display: block;
+  padding-block: 2px;
+}
+
+.footerLink:hover {
+  color: var(--color-white);
+}
+
+.sectorTag {
+  font-size: var(--text-xs);
+  color: var(--color-navy-400);
+  font-family: var(--font-label);
+  letter-spacing: 0.08em;
+}
+
+/* ─── ADDRESS ───────────────────────────────────────────────── */
+.address {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  font-size: var(--text-sm);
+  color: var(--color-navy-300);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+.address svg {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.regBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-5);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-dark);
+}
+
+.regRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.regKey {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: var(--tracking-super);
+  text-transform: uppercase;
+}
+
+.regVal {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-navy-300);
+  letter-spacing: 0.04em;
+  word-break: break-all;
+}
+
+.certBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.certBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(232, 80, 0, 0.08);
+  border: 1px solid rgba(232, 80, 0, 0.2);
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─── BOTTOM BAR ────────────────────────────────────────────── */
+.bottomBar {
+  border-top: 1px solid var(--color-border-dark);
+  padding: var(--space-6) 0;
+}
+
+.bottomInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.copyright {
+  font-size: var(--text-sm);
+  color: var(--color-navy-400);
+}
+
+.legal {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.legalLink {
+  font-size: var(--text-sm);
+  color: var(--color-navy-400);
+  text-decoration: none;
+  transition: color var(--duration-fast);
+}
+
+.legalLink:hover {
+  color: var(--color-white);
+}
+
+.legalSep {
+  color: var(--color-navy-600);
+}
+
+.iso {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-navy-500);
+  letter-spacing: 0.08em;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-10);
+  }
+
+  .ctaInner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ctaActions {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .ctaActions {
+    flex-direction: column;
+  }
+
+  .ctaActions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .bottomInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .ctaHeading {
+    font-size: var(--text-h3);
+  }
+}

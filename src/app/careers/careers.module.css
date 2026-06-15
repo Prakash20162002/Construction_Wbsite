@@ -1,0 +1,435 @@
+.sectionHeading {
+  font-size: var(--text-h2);
+  color: var(--color-white);
+  text-transform: uppercase;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+
+/* ─── EVP ────────────────────────────────────────────────────── */
+.evp { background: var(--color-bg-primary); }
+
+.evpGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+.evpCard {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-dark);
+  border-top: 3px solid transparent;
+  padding: var(--space-10) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  transition: border-top-color var(--duration-fast);
+}
+
+.evpCard:hover { border-top-color: var(--color-accent); }
+
+.evpIcon { font-size: 28px; line-height: 1; }
+
+.evpHeading {
+  font-size: var(--text-h5);
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.evpDesc {
+  font-size: var(--text-sm);
+  color: var(--color-navy-300);
+  line-height: var(--leading-relaxed);
+}
+
+/* ─── JOBS ───────────────────────────────────────────────────── */
+.jobs {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border-dark);
+}
+
+.jobFilter {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-10);
+}
+
+.filterBtn {
+  padding: 8px 20px;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-dark);
+  color: var(--color-navy-400);
+  font-family: var(--font-label);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast),
+    color var(--duration-fast),
+    border-color var(--duration-fast);
+}
+
+.filterBtnActive,
+.filterBtn:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.jobList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--color-border-dark);
+}
+
+.jobCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-7) var(--space-8);
+  border-bottom: 1px solid var(--color-border-dark);
+  background: var(--color-bg-primary);
+  gap: var(--space-8);
+  transition: background var(--duration-fast);
+}
+
+.jobCard:last-child { border-bottom: none; }
+
+.jobCard:hover { background: var(--color-bg-surface); }
+
+.jobDeptBadge {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.jobTitle {
+  font-size: var(--text-h5);
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-3);
+}
+
+.jobMeta {
+  display: flex;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.jobMetaItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-navy-400);
+}
+
+.jobMetaItem svg { color: var(--color-accent); }
+
+.noJobs {
+  padding: var(--space-12);
+  text-align: center;
+  color: var(--color-navy-400);
+  font-size: var(--text-base);
+  background: var(--color-bg-primary);
+}
+
+/* ─── LIFE ───────────────────────────────────────────────────── */
+.life {
+  background: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border-dark);
+}
+
+.lifeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.testimonial {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-dark);
+  border-left: 3px solid var(--color-accent);
+  padding: var(--space-8);
+}
+
+.testimonialQuote {
+  font-size: var(--text-base);
+  color: var(--color-navy-300);
+  line-height: var(--leading-relaxed);
+  font-style: italic;
+  margin-bottom: var(--space-6);
+}
+
+.testimonialName {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.testimonialRole {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--color-navy-400);
+  margin-top: 2px;
+}
+
+.testimonialYears {
+  display: block;
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: var(--space-2);
+}
+
+/* Life photo grid */
+.lifePhotoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--color-border-dark);
+}
+
+.lifePhoto {
+  position: relative;
+  height: 160px;
+  background: var(--color-navy-800);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-4);
+}
+
+.lifePhotoPattern {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 15px,
+    rgba(255, 255, 255, 0.02) 15px,
+    rgba(255, 255, 255, 0.02) 16px
+  );
+}
+
+.lifePhotoLabel {
+  position: relative;
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-navy-500);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── TRAINING ───────────────────────────────────────────────── */
+.training {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border-dark);
+}
+
+.trainingGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.trainingCards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.trainingCard {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-dark);
+  border-left: 3px solid var(--color-accent);
+  padding: var(--space-6) var(--space-7);
+}
+
+.trainingCardTitle {
+  font-size: var(--text-h5);
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-3);
+}
+
+.trainingCardDesc {
+  font-size: var(--text-sm);
+  color: var(--color-navy-300);
+  line-height: var(--leading-relaxed);
+}
+
+.benefitsHeading { margin-bottom: var(--space-8); font-size: var(--text-h3); }
+
+.benefitsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.benefitItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  font-size: var(--text-base);
+  color: var(--color-navy-300);
+  line-height: var(--leading-snug);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-dark);
+}
+
+.benefitItem:last-child { border-bottom: none; padding-bottom: 0; }
+
+.benefitDot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+/* ─── REGISTER INTEREST ──────────────────────────────────────── */
+.register {
+  background: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border-dark);
+}
+
+.registerInner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.registerDesc {
+  font-size: var(--text-base);
+  color: var(--color-navy-300);
+  line-height: var(--leading-relaxed);
+  margin-top: calc(-1 * var(--space-8));
+}
+
+.registerForm {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-dark);
+  padding: var(--space-10);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-navy-400);
+  letter-spacing: var(--tracking-super);
+  text-transform: uppercase;
+}
+
+.input {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-dark);
+  color: var(--color-white);
+  padding: 12px 16px;
+  font-size: var(--text-sm);
+  font-family: var(--font-body);
+  border-radius: 0;
+  appearance: none;
+  transition: border-color var(--duration-fast);
+  width: 100%;
+}
+
+.input::placeholder { color: var(--color-navy-500); }
+.input:focus { outline: none; border-color: var(--color-accent); }
+.input option { background: var(--color-bg-secondary); }
+
+/* Success */
+.successBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-12);
+  gap: var(--space-5);
+}
+
+.successIcon {
+  width: 60px;
+  height: 60px;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successTitle {
+  font-size: var(--text-h4);
+  color: var(--color-white);
+  text-transform: uppercase;
+}
+
+.successText {
+  font-size: var(--text-base);
+  color: var(--color-navy-300);
+  max-width: 280px;
+  line-height: var(--leading-relaxed);
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .evpGrid { grid-template-columns: 1fr 1fr; }
+  .lifeGrid { grid-template-columns: 1fr; }
+  .trainingGrid { grid-template-columns: 1fr; }
+  .registerInner { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 767px) {
+  .evpGrid { grid-template-columns: 1fr; }
+  .formRow { grid-template-columns: 1fr; }
+  .jobCard { flex-direction: column; align-items: flex-start; }
+}

@@ -1,0 +1,206 @@
+/* ═══════════════════════════════════════════════════════════════
+   STATS STRIP — Company Statistics
+   Dark industrial background · Giant orange numbers
+═══════════════════════════════════════════════════════════════ */
+
+/* ─── SECTION ───────────────────────────────────────────────── */
+.strip {
+  position: relative;
+  background: var(--color-navy-950);
+  overflow: hidden;
+  padding: var(--section-gap-lg) 0;
+  border-top: 1px solid rgba(232, 80, 0, 0.25);
+  border-bottom: 1px solid rgba(232, 80, 0, 0.25);
+}
+
+/* Background industrial texture */
+.bgTexture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.bgLines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 60px,
+    rgba(232, 80, 0, 0.025) 60px,
+    rgba(232, 80, 0, 0.025) 61px
+  );
+}
+
+/* ─── INNER ─────────────────────────────────────────────────── */
+.inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── TOP ROW ───────────────────────────────────────────────── */
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  margin-bottom: var(--space-16);
+  padding-bottom: var(--space-10);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.labelGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.labelLine {
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.label {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-size: var(--text-base);
+  color: var(--color-navy-400);
+  font-style: italic;
+}
+
+/* ─── STATS GRID ────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ─── STAT CARD ─────────────────────────────────────────────── */
+.statCard {
+  position: relative;
+  background: var(--color-navy-950);
+  padding: var(--space-12) var(--space-10);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  overflow: hidden;
+  transition: background var(--duration-fast);
+}
+
+.statCard:hover {
+  background: rgba(232, 80, 0, 0.04);
+}
+
+/* Orange top-left corner accent */
+.corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--color-accent);
+}
+
+/* Ghost large background number */
+.statCard::after {
+  content: attr(data-num);
+  position: absolute;
+  bottom: -10px;
+  right: var(--space-6);
+  font-family: var(--font-heading);
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.statTop {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+
+/* GIANT number */
+.statNum {
+  font-family: var(--font-heading);
+  font-size: clamp(64px, 7vw, 96px);
+  font-weight: 900;
+  color: var(--color-accent);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  display: block;
+  transition: color var(--duration-fast);
+}
+
+.statCard:hover .statNum {
+  color: #ff9955;
+}
+
+.statBottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.statLabel {
+  font-family: var(--font-heading);
+  font-size: var(--text-h5);
+  font-weight: 700;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: var(--leading-snug);
+}
+
+.statSub {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-navy-400);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Vertical divider (not on last card) */
+.statDivider {
+  display: none; /* using gap/1px background instead */
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .topRow { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 599px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+  .statCard { padding: var(--space-8) var(--space-6); }
+  .statNum { font-size: clamp(48px, 12vw, 72px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statNum { transition: none; }
+}

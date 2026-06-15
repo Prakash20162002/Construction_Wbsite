@@ -1,0 +1,206 @@
+.projects {
+  background: var(--color-navy-950);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--space-12);
+  gap: var(--space-8);
+}
+
+.heading {
+  font-size: var(--text-h2);
+  margin-top: var(--space-4);
+}
+
+.subheading {
+  font-size: var(--text-base);
+  color: var(--color-navy-400);
+  max-width: 380px;
+  text-align: right;
+  line-height: var(--leading-relaxed);
+}
+
+/* ─── GRID ──────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 2px;
+  background: var(--color-border-dark);
+}
+
+/* Featured project spans full top row width × 2 columns */
+.featured {
+  grid-column: span 2;
+}
+
+/* ─── CARD ──────────────────────────────────────────────────── */
+.card {
+  background: var(--color-bg-secondary);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+/* ─── VISUAL ────────────────────────────────────────────────── */
+.cardVisual {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.featured .cardVisual {
+  aspect-ratio: 16 / 9;
+}
+
+.cardVisual svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.card:hover .cardVisual svg {
+  transform: scale(1.05);
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(5, 9, 15, 0.95) 0%,
+    rgba(5, 9, 15, 0.4) 50%,
+    transparent 100%
+  );
+}
+
+/* ─── META (on image) ───────────────────────────────────────── */
+.cardMeta {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cardCategory {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-super);
+  text-transform: uppercase;
+  padding: 4px 10px;
+}
+
+.cardYear {
+  font-family: var(--font-heading);
+  font-size: var(--text-h5);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+/* ─── CONTENT ───────────────────────────────────────────────── */
+.cardContent {
+  padding: var(--space-6) var(--space-6) var(--space-8);
+  background: var(--color-bg-secondary);
+  transition: background var(--duration-normal);
+}
+
+.card:hover .cardContent {
+  background: var(--color-bg-surface);
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-h4);
+  font-weight: 700;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-4);
+}
+
+.featured .cardTitle {
+  font-size: var(--text-h3);
+}
+
+/* ─── SPECS ─────────────────────────────────────────────────── */
+.cardSpecs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.spec {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-navy-400);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.spec svg {
+  color: var(--color-accent);
+}
+
+/* ─── VIEW ALL ──────────────────────────────────────────────── */
+.viewAll {
+  margin-top: var(--space-12);
+  display: flex;
+  justify-content: center;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featured {
+    grid-column: span 2;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .subheading {
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+
+  .featured {
+    grid-column: span 1;
+  }
+
+  .featured .cardVisual {
+    aspect-ratio: 4 / 3;
+  }
+
+  .featured .cardTitle {
+    font-size: var(--text-h4);
+  }
+}

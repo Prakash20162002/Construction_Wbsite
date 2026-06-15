@@ -1,0 +1,252 @@
+/* ═══════════════════════════════════════════════════════════════
+   LOADING SCREEN — Cinematic 5-second intro
+   Runs once per session · Full-screen navy with logo + progress
+═══════════════════════════════════════════════════════════════ */
+
+.screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--color-navy-950);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.65s ease-out, visibility 0.65s;
+  opacity: 1;
+  visibility: visible;
+}
+
+.fadeOut {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* ─── BACKGROUND ────────────────────────────────────────────── */
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+
+.bgLines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 80px,
+    rgba(232, 80, 0, 0.03) 80px,
+    rgba(232, 80, 0, 0.03) 81px
+  );
+  pointer-events: none;
+}
+
+/* Vignette */
+.screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    transparent 40%,
+    rgba(8, 15, 26, 0.6) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── CENTER ────────────────────────────────────────────────── */
+.center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-12);
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ─── LOGO ──────────────────────────────────────────────────── */
+.logoWrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  animation: logoReveal 0.8s ease-out forwards;
+}
+
+.logo {
+  object-fit: contain;
+  width: 100% !important;
+  height: 100% !important;
+  /* Transparent PNG — renders cleanly on dark navy */
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ─── TAGLINE ───────────────────────────────────────────────── */
+.tagline {
+  font-family: var(--font-label);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-navy-300);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  animation: fadeUp 0.6s 0.3s ease-out both;
+}
+
+.taglineAccent {
+  color: var(--color-accent);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── PROGRESS ──────────────────────────────────────────────── */
+.progressWrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  animation: fadeUp 0.6s 0.5s ease-out both;
+}
+
+.progressTrack {
+  position: relative;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: visible;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--color-accent);
+  transition: width 0.06s linear;
+  position: relative;
+}
+
+.progressGlow {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 12px;
+  background: radial-gradient(ellipse, rgba(232, 80, 0, 0.8) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progressText {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-navy-400);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.progressNum {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+  min-width: 40px;
+  text-align: right;
+}
+
+/* ─── CORNER MARKS ──────────────────────────────────────────── */
+.cornerTL,
+.cornerBR {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+}
+
+.cornerTL {
+  top: 0;
+  left: 0;
+  border-top: 2px solid var(--color-accent);
+  border-left: 2px solid var(--color-accent);
+}
+
+.cornerBR {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+}
+
+/* ─── BOTTOM STRIP ──────────────────────────────────────────── */
+.bottomStrip {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  white-space: nowrap;
+  z-index: 2;
+  animation: fadeUp 0.6s 0.8s ease-out both;
+}
+
+.bottomBrand {
+  font-family: var(--font-heading);
+  font-size: var(--text-label);
+  font-weight: 900;
+  color: var(--color-white);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.bottomDivider {
+  display: block;
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.bottomSub {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-navy-400);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ─── REDUCED MOTION ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .logo, .logoWrap { animation: none; }
+  .screen { transition: opacity 0.2s; }
+}

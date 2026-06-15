@@ -1,0 +1,405 @@
+/* ─── FILTER BAR ────────────────────────────────────────────── */
+.filterBar {
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border-dark);
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 10;
+  padding: var(--space-5) 0;
+}
+
+.filters {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.filterLabel {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-navy-500);
+  letter-spacing: var(--tracking-super);
+  text-transform: uppercase;
+}
+
+.filterSelect {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-dark);
+  color: var(--color-navy-200);
+  padding: 8px 12px;
+  font-family: var(--font-label);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  appearance: none;
+  cursor: pointer;
+  min-width: 140px;
+  border-radius: 0;
+  transition: border-color var(--duration-fast);
+}
+
+.filterSelect:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.filterSelect option {
+  background: var(--color-bg-secondary);
+}
+
+.resultCount {
+  margin-left: auto;
+  font-size: var(--text-sm);
+  color: var(--color-navy-400);
+  align-self: flex-end;
+  padding-bottom: 8px;
+}
+
+.resultCount strong {
+  color: var(--color-white);
+}
+
+/* ─── PROJECT GRID ──────────────────────────────────────────── */
+.grid {
+  background: var(--color-bg-primary);
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+/* ─── PROJECT CARD ──────────────────────────────────────────── */
+.projectCard {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-dark);
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--duration-fast);
+  border-radius: var(--radius-card);
+}
+
+.projectCard:hover {
+  border-color: var(--color-accent);
+}
+
+.cardVisual {
+  position: relative;
+  height: 200px;
+  background: var(--color-navy-800);
+  overflow: hidden;
+}
+
+.cardPattern {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      rgba(255, 255, 255, 0.02) 20px,
+      rgba(255, 255, 255, 0.02) 21px
+    );
+}
+
+.cardVisualLabel {
+  position: absolute;
+  bottom: var(--space-4);
+  left: var(--space-4);
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-navy-400);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cardYear {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-navy-500);
+  background: var(--color-bg-primary);
+  padding: 2px 8px;
+  border: 1px solid var(--color-border-dark);
+}
+
+.cardBody {
+  padding: var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.cardSector {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cardTitle {
+  font-size: var(--text-h5);
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: var(--leading-snug);
+}
+
+.cardLocation {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-navy-400);
+}
+
+.cardLocation svg { color: var(--color-accent); }
+
+.cardSpecs {
+  display: flex;
+  gap: var(--space-6);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--color-border-dark);
+  border-bottom: 1px solid var(--color-border-dark);
+}
+
+.cardSpec {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cardSpecKey {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-navy-500);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cardSpecVal {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-navy-200);
+  font-weight: 600;
+}
+
+.cardCta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-accent);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: auto;
+  transition: gap var(--duration-fast);
+}
+
+.cardCta:hover {
+  gap: var(--space-3);
+}
+
+/* ─── LOAD MORE ─────────────────────────────────────────────── */
+.loadMoreWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-12);
+}
+
+/* ─── EMPTY STATE ───────────────────────────────────────────── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-20) 0;
+  text-align: center;
+}
+
+.emptyText {
+  font-size: var(--text-lg);
+  color: var(--color-navy-400);
+}
+
+/* ─── FEATURED CASE STUDY ───────────────────────────────────── */
+.featured {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border-dark);
+}
+
+.featuredHeading {
+  font-size: var(--text-h2);
+  color: var(--color-white);
+  text-transform: uppercase;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0;
+  border: 1px solid var(--color-border-dark);
+}
+
+.featuredVisual {
+  position: relative;
+  min-height: 480px;
+  background: var(--color-navy-800);
+  overflow: hidden;
+}
+
+.featuredPattern {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(232, 80, 0, 0.03) 30px,
+      rgba(232, 80, 0, 0.03) 31px
+    );
+}
+
+.featuredOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-10);
+  background: linear-gradient(to top, rgba(12, 24, 41, 0.95), transparent);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.featuredCatPill {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 4px 12px;
+  background: var(--color-accent);
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.featuredVisualTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: 800;
+  color: var(--color-white);
+  text-transform: uppercase;
+  line-height: var(--leading-snug);
+}
+
+.featuredContent {
+  padding: var(--space-10);
+  background: var(--color-bg-primary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.featuredMeta {
+  display: flex;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.featuredYear {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-navy-500);
+}
+
+.featuredLocation {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-navy-400);
+}
+
+.featuredLocation svg { color: var(--color-accent); }
+
+.featuredTitle {
+  font-size: var(--text-h3);
+  color: var(--color-white);
+  text-transform: uppercase;
+  line-height: var(--leading-snug);
+}
+
+.featuredSummary {
+  font-size: var(--text-base);
+  color: var(--color-navy-300);
+  line-height: var(--leading-relaxed);
+}
+
+.featuredHighlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--color-border-dark);
+  border-bottom: 1px solid var(--color-border-dark);
+}
+
+.featuredHighlight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-navy-200);
+}
+
+.featureDot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .projectGrid { grid-template-columns: repeat(2, 1fr); }
+
+  .featuredGrid { grid-template-columns: 1fr; }
+
+  .featuredVisual { min-height: 280px; }
+}
+
+@media (max-width: 767px) {
+  .projectGrid { grid-template-columns: 1fr; }
+
+  .filters {
+    gap: var(--space-4);
+  }
+
+  .filterSelect { min-width: 120px; }
+
+  .resultCount { margin-left: 0; width: 100%; }
+}

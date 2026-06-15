@@ -1,0 +1,165 @@
+.about { }
+
+.header {
+  margin-bottom: 0;
+}
+
+.headerGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  margin-top: var(--space-8);
+  align-items: start;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-h2);
+}
+
+.headingAccent {
+  color: var(--color-accent);
+  display: block;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.headerText p {
+  color: var(--color-navy-300);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+/* ─── PILLARS ───────────────────────────────────────────────── */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.pillar {
+  padding: var(--space-8);
+  border: 1px solid var(--color-border-dark);
+  border-top: 3px solid var(--color-accent);
+  background: var(--color-bg-primary);
+  transition: background var(--duration-normal);
+}
+
+.pillar:hover {
+  background: var(--color-bg-surface);
+}
+
+.pillarIcon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(232, 80, 0, 0.1);
+  color: var(--color-accent);
+  margin-bottom: var(--space-6);
+}
+
+.pillarTitle {
+  font-size: var(--text-h5);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-3);
+}
+
+.pillarDesc {
+  font-size: var(--text-sm);
+  color: var(--color-navy-300);
+  line-height: var(--leading-relaxed);
+}
+
+/* ─── CERTIFICATIONS ────────────────────────────────────────── */
+.certsSection { }
+
+.certsHeading {
+  font-size: var(--text-h3);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-10);
+  text-transform: uppercase;
+}
+
+.certsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.certCard {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  padding: var(--space-6);
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-dark);
+  transition: border-color var(--duration-fast);
+  border-radius: var(--radius-card);
+}
+
+.certCard:hover {
+  border-color: var(--color-accent);
+}
+
+.certCheck {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.certCode {
+  font-family: var(--font-heading);
+  font-size: var(--text-h5);
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: var(--tracking-normal);
+  margin-bottom: var(--space-1);
+}
+
+.certTitle {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-navy-200);
+  margin-bottom: var(--space-1);
+}
+
+.certBody {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-family: var(--font-label);
+  letter-spacing: 0.05em;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .certsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .headerGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .certsGrid {
+    grid-template-columns: 1fr;
+  }
+}

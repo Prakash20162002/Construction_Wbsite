@@ -1,0 +1,290 @@
+.contact {
+  background: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border-dark);
+}
+
+/* ─── HEADER ────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-12);
+  margin-bottom: var(--space-16);
+}
+
+.heading {
+  font-size: var(--text-h2);
+  margin-top: var(--space-4);
+}
+
+.subheading {
+  font-size: var(--text-base);
+  color: var(--color-navy-400);
+  max-width: 360px;
+  text-align: right;
+  line-height: var(--leading-relaxed);
+}
+
+/* ─── LAYOUT GRID ───────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+/* ─── INFO PANEL ────────────────────────────────────────────── */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.infoItem {
+  display: flex;
+  gap: var(--space-5);
+  align-items: flex-start;
+}
+
+.infoIcon {
+  width: 44px;
+  height: 44px;
+  background: rgba(232, 80, 0, 0.1);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.infoLabel {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: var(--tracking-super);
+  text-transform: uppercase;
+  margin-bottom: var(--space-1);
+}
+
+.infoValue {
+  font-size: var(--text-base);
+  color: var(--color-navy-200);
+  text-decoration: none;
+  line-height: var(--leading-relaxed);
+  transition: color var(--duration-fast);
+}
+
+.infoValue:hover {
+  color: var(--color-white);
+}
+
+/* ─── REG INFO ──────────────────────────────────────────────── */
+.regInfo {
+  padding: var(--space-6);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-dark);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.regRow {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.regLabel {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-navy-400);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  min-width: 48px;
+}
+
+.regValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-navy-200);
+  letter-spacing: 0.05em;
+}
+
+/* ─── QUICK BOXES ───────────────────────────────────────────── */
+.quickBoxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--color-border-dark);
+}
+
+.quickBox {
+  padding: var(--space-6) var(--space-6);
+  background: var(--color-bg-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.quickNum {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: 900;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.quickLabel {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-navy-400);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── FORM ──────────────────────────────────────────────────── */
+.formWrap {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-dark);
+  padding: var(--space-10);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--color-navy-400);
+  letter-spacing: var(--tracking-super);
+  text-transform: uppercase;
+}
+
+.input {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-dark);
+  color: var(--color-white);
+  padding: 12px 16px;
+  font-size: var(--text-sm);
+  font-family: var(--font-body);
+  border-radius: 0;
+  appearance: none;
+  transition:
+    border-color var(--duration-fast) var(--ease-sharp),
+    background var(--duration-fast);
+  width: 100%;
+}
+
+.input::placeholder {
+  color: var(--color-navy-500);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  background: var(--color-bg-surface);
+}
+
+.input option {
+  background: var(--color-bg-secondary);
+  color: var(--color-white);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitBtn {
+  margin-top: var(--space-2);
+}
+
+.formNote {
+  font-size: var(--text-xs);
+  color: var(--color-navy-500);
+  text-align: center;
+  line-height: var(--leading-relaxed);
+}
+
+/* ─── SUCCESS STATE ─────────────────────────────────────────── */
+.successState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-20) var(--space-10);
+  min-height: 360px;
+}
+
+.successIcon {
+  width: 72px;
+  height: 72px;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-8);
+}
+
+.successTitle {
+  font-size: var(--text-h3);
+  color: var(--color-white);
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+
+.successText {
+  font-size: var(--text-base);
+  color: var(--color-navy-300);
+  max-width: 360px;
+  line-height: var(--leading-relaxed);
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .subheading {
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .formWrap {
+    padding: var(--space-6);
+  }
+}
