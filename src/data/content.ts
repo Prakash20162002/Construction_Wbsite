@@ -17,9 +17,9 @@ export const COMPANY = {
 
 export const STATS = [
   { number: '26+', label: 'Years of Excellence' },
-  { number: '850+', label: 'Projects Completed' },
-  { number: '120+', label: 'Industry Clients' },
-  { number: '2400T', label: 'Steel Fabricated Annually' },
+  { number: '50+', label: 'Projects Completed' },
+  { number: '40+', label: 'Industry Clients' },
+  { number: '200T', label: 'Steel Fabricated Annually' },
 ];
 
 export const SERVICES = [

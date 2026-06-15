@@ -12,10 +12,7 @@ const SERVICES_LIST = [
   'Steel Fabrication',
   'Structural Erection',
   'Civil Construction',
-  'Manufacturing',
-  'Project Management',
-  'Industrial Maintenance',
-  'Other / Multiple',
+  'Manufacturing'
 ];
 
 const PROJECT_SIZES = [
@@ -350,7 +347,7 @@ export default function ContactClient() {
                 {[
                   '26+ Years of Execution',
                   'Konnagar, West Bengal',
-                  '850+ Projects Delivered',
+                  '50+ Projects Delivered',
                   'Pan-India Operations',
                   'End-to-End EPC Capability',
                   'Zero Compromise on Safety',
