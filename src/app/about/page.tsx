@@ -20,14 +20,6 @@ const TIMELINE = [
   { year: '2024', event: '50+ projects delivered. 120+ skilled workforce. 26 years of uninterrupted industrial excellence.' },
 ];
 
-const LEADERSHIP = [
-  { name: 'Rajinder Bhandari', title: 'Chairman & Founder', bio: '40+ years in industrial steel. Founded the company on principles of precision engineering and zero-defect manufacturing.' },
-  { name: 'Amandeep Bhandari', title: 'Managing Director', bio: 'Drives strategic growth and enterprise partnerships. Civil engineer with 20+ years building India\'s industrial infrastructure.' },
-  { name: 'Vikram Sharma', title: 'Director — Projects', bio: 'Oversees simultaneous project execution across India. 18+ years managing EPC contracts from concept to commissioning.' },
-  { name: 'Dr. Suresh Mehta', title: 'Director — Engineering', bio: 'Leads technical excellence. Structural engineer with ASME, IS:800, and AISC expertise across 300+ industrial structures.' },
-  { name: 'Harpreet Singh', title: 'Head — Quality & Safety', bio: 'Maintains ISO certifications and HSE compliance. NEBOSH-certified with a zero-LTI record over 12 consecutive years.' },
-  { name: 'Nisha Kapoor', title: 'Head — Business Development', bio: 'Builds enterprise relationships with EPC contractors, government bodies, and multinational industrial clients across India.' },
-];
 
 const MVV = [
   {
@@ -110,36 +102,11 @@ export default function AboutPage() {
                   <div className={styles.timelineContent}>{item.event}</div>
                 </div>
               ))}
-            </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Leadership */}
-      <section className={`section ${styles.leadership}`} id="leadership" aria-labelledby="leadership-heading">
-        <div className="container container--content">
-          <div className="reveal">
-            <span className="overline">Leadership Team</span>
-            <h2 id="leadership-heading" className={styles.sectionHeading}>
-              The People Who Deliver
-            </h2>
-          </div>
-          <div className={styles.leadershipGrid}>
-            {LEADERSHIP.map((person) => (
-              <article key={person.name} className={`reveal ${styles.leaderCard}`}>
-                <div className={styles.leaderAvatar} aria-hidden="true">
-                  {person.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                </div>
-                <div className={styles.leaderInfo}>
-                  <h3 className={styles.leaderName}>{person.name}</h3>
-                  <p className={styles.leaderTitle}>{person.title}</p>
-                  <p className={styles.leaderBio}>{person.bio}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Manufacturing Facility */}
       <section className={`section ${styles.facility}`} id="facility" aria-labelledby="facility-heading">
@@ -206,7 +173,7 @@ export default function AboutPage() {
         <div className="container container--content">
           <span className="overline">What Drives Us</span>
           <h2 id="mvv-heading" className={styles.sectionHeading}>Mission, Vision & Values</h2>
-          <div className={styles.mvvGrid}>
+          <div className={`${styles.mvvGrid} reveal-group`}>
             {MVV.map((item) => (
               <div key={item.label} className={`reveal ${styles.mvvCard}`}>
                 <div className={styles.mvvIcon} aria-hidden="true">{item.icon}</div>
@@ -224,7 +191,7 @@ export default function AboutPage() {
           <div className="container container--content">
             <span className="overline">Quality & Compliance</span>
             <h2 id="cert-heading" className={styles.sectionHeading}>Our Standards & Compliance</h2>
-            <div className={styles.certGrid}>
+            <div className={`${styles.certGrid} reveal-group`}>
               {certs.map((cert) => (
                 <div key={cert.code} className={`reveal ${styles.certCard}`}>
                   <div className={styles.certCheck} aria-hidden="true">✓</div>

@@ -259,15 +259,21 @@
     flex-direction: column;
     gap: var(--space-2);
     bottom: var(--space-6);
+    white-space: normal;
+    width: 90%;
+    text-align: center;
   }
   .bottomDivider {
     display: none;
   }
   .bottomBrand {
     font-size: 10px;
+    letter-spacing: 0.12em;
   }
   .bottomSub {
     font-size: 9px;
+    letter-spacing: 0.06em;
+    line-height: var(--leading-normal);
   }
 }
 

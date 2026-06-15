@@ -69,7 +69,7 @@ export default function CareersPage() {
         <div className="container container--content">
           <span className="overline">Why Bhandari</span>
           <h2 id="evp-heading" className={styles.sectionHeading}>Why Engineers Choose Us</h2>
-          <div className={styles.evpGrid}>
+          <div className={`${styles.evpGrid} reveal-group`}>
             {EVP.map((item) => (
               <div key={item.heading} className={`reveal ${styles.evpCard}`}>
                 <div className={styles.evpIcon} aria-hidden="true">{item.icon}</div>
