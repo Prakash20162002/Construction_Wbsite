@@ -59,11 +59,8 @@ export default function About() {
             </div>
             <div className={`reveal ${styles.headerText}`}>
               <p>
-                For over two decades, Bhandari Enterprise has been the trusted partner
-                for India's largest industrial groups — combining precision engineering
-                with industrial-scale manufacturing capability from our state-of-the-art
-                facility in Konnagar, Hooghly, serving sectors across petrochemical,
-                power, logistics and civil infrastructure.
+                From our facility in Konnagar, Hooghly, Bhandari Enterprise has built a reputation for quality, reliability, and skilled craftsmanship. Backed by a dedicated team of experienced workers and a commitment to excellence, we provide precision fabrication and engineering solutions for industrial and infrastructure projects across West Bengal. Every project reflects our focus on hard work, attention to detail, and delivering results that our clients can depend on.
+
               </p>
               <a href="#featured-projects" className="btn btn--primary" style={{ marginTop: 'var(--space-6)', alignSelf: 'flex-start' }}>
                 Work With Us
