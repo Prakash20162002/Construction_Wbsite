@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, after } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
@@ -40,6 +40,9 @@ export async function POST(request: Request) {
         user: smtpUser,
         pass: smtpPass,
       },
+      pool: true, // Enable connection pooling to reuse the SMTP connection
+      maxConnections: 3,
+      maxMessages: 10,
     });
 
     // 1. Notification Email to the Company (gourbhandari68@gmail.com)
@@ -193,17 +196,24 @@ Konnagar, West Bengal — 712235
       `,
     };
 
-    // Send emails in parallel
-    await Promise.all([
-      transporter.sendMail(companyMailOptions),
-      transporter.sendMail(userMailOptions),
-    ]);
+    // Send emails in the background after the response is sent to the client
+    after(async () => {
+      try {
+        await Promise.all([
+          transporter.sendMail(companyMailOptions),
+          transporter.sendMail(userMailOptions),
+        ]);
+        console.log('✅ Background emails sent successfully.');
+      } catch (mailError: any) {
+        console.error('❌ Error sending emails in background:', mailError);
+      }
+    });
 
-    return NextResponse.json({ success: true, message: 'Emails sent successfully.' });
+    return NextResponse.json({ success: true, message: 'Enquiry received successfully.' });
   } catch (error: any) {
-    console.error('Error sending email:', error);
+    console.error('Error in contact API route:', error);
     return NextResponse.json(
-      { error: 'Failed to send emails. Please try again later.', details: error.message },
+      { error: 'Failed to process enquiry. Please try again later.', details: error.message },
       { status: 500 }
     );
   }
