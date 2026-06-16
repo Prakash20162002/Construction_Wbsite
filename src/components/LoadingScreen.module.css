@@ -79,31 +79,108 @@
   position: relative;
   width: 220px;
   height: 220px;
-  animation: logoReveal 0.8s ease-out forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: logoReveal 1.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* Background glowing aura behind the logo */
+.logoWrap::before {
+  content: '';
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(232, 80, 0, 0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  animation: auraReveal 1.4s cubic-bezier(0.19, 1, 0.22, 1) 0.2s forwards,
+             auraPulse 4s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
 .logo {
   object-fit: contain;
   width: 100% !important;
   height: 100% !important;
-  /* Transparent PNG — renders cleanly on dark navy */
-  animation: logoFloat 3s ease-in-out infinite;
+  animation: logoFloat 4s ease-in-out infinite;
+}
+
+.logoGlint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.45) 45%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.45) 55%,
+    transparent 70%
+  );
+  background-size: 300% 100%;
+  background-position: 200% 0;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 3;
+  mask-image: url('/logo-v2.png');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url('/logo-v2.png');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  animation: shineSweep 4s ease-in-out infinite;
 }
 
 @keyframes logoReveal {
   from {
     opacity: 0;
-    transform: scale(0.85) translateY(16px);
+    filter: blur(12px) brightness(0.3);
+    transform: scale(0.75) translateY(20px);
   }
   to {
     opacity: 1;
+    filter: blur(0) brightness(1);
     transform: scale(1) translateY(0);
   }
 }
 
+@keyframes auraReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes auraPulse {
+  0% {
+    transform: scale(1.2);
+    filter: brightness(0.8);
+  }
+  100% {
+    transform: scale(1.4);
+    filter: brightness(1.2);
+  }
+}
+
 @keyframes logoFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.02); }
+}
+
+@keyframes shineSweep {
+  0% {
+    background-position: 200% 0;
+  }
+  35%, 100% {
+    background-position: -100% 0;
+  }
 }
 
 /* ─── TAGLINE ───────────────────────────────────────────────── */

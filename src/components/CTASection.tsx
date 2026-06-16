@@ -68,7 +68,7 @@ export default function CTASection() {
             {[
               'Quality Assured',
               '26+ Years Experience',
-              '850+ Projects Delivered',
+              '50+ Projects Delivered',
               'Pan-India Operations',
             ].map((chip) => (
               <span key={chip} className={styles.chip}>{chip}</span>
@@ -79,7 +79,7 @@ export default function CTASection() {
         {/* Right visual panel */}
         <div className={styles.visual} aria-hidden="true">
           <div className={styles.visualInner}>
-            <div className={styles.bigNum}>850<span className={styles.bigNumPlus}>+</span></div>
+            <div className={styles.bigNum}>50<span className={styles.bigNumPlus}>+</span></div>
             <div className={styles.bigLabel}>Projects Delivered</div>
             <div className={styles.visualDivider} />
             <div className={styles.visualStats}>
@@ -89,7 +89,7 @@ export default function CTASection() {
               </div>
               <div className={styles.vDivider} />
               <div className={styles.vStat}>
-                <span className={styles.vNum}>400+</span>
+                <span className={styles.vNum}>150+</span>
                 <span className={styles.vLabel}>Team</span>
               </div>
               <div className={styles.vDivider} />

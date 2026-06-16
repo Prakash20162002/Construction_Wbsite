@@ -78,7 +78,7 @@ export default function Navbar() {
             onClick={handleLogoClick}
           >
             <Image
-              src="/logo.png"
+              src="/logo-v2.png"
               alt="Bhandari Enterprise"
               width={64}
               height={64}

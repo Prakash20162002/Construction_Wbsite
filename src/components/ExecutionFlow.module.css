@@ -581,3 +581,56 @@
   }
   .stageImage { transition: none; }
 }
+
+/* ─── SLIDESHOW FOR STAGE 01 ────────────────────────────────── */
+.slideImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 8s ease-out;
+  pointer-events: none;
+}
+
+.slideActive {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.slideDots {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--space-3);
+  z-index: 10;
+  background: rgba(8, 15, 26, 0.6);
+  padding: 6px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.slideDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--duration-fast), transform var(--duration-fast);
+}
+
+.slideDot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.slideDotActive {
+  background: var(--color-accent);
+  transform: scale(1.26);
+}

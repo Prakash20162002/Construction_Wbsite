@@ -19,7 +19,7 @@ export default function Footer() {
             <div className={styles.brand}>
               <div className={styles.logoMark} aria-hidden="true">
                 <Image
-                  src="/logo.png"
+                  src="/logo-v2.png"
                   alt="Bhandari Enterprise Logo"
                   width={140}
                   height={44}

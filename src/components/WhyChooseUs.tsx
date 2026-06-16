@@ -14,7 +14,7 @@ const FEATURES = [
   {
     icon: HardHat,
     title: 'Skilled Workforce',
-    desc: '400+ certified engineers, welders, and erection specialists with heavy industrial domain expertise.',
+    desc: '150+ certified engineers, welders, and erection specialists with heavy industrial domain expertise.',
     accent: false,
   },
   {
@@ -32,7 +32,7 @@ const FEATURES = [
   {
     icon: Wrench,
     title: '26+ Years Experience',
-    desc: 'Deep domain knowledge accumulated since 1998 across 850+ industrial projects nationwide.',
+    desc: 'Deep domain knowledge accumulated since 1998 across 50+ industrial projects nationwide.',
     accent: false,
   },
   {

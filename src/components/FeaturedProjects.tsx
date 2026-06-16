@@ -15,7 +15,7 @@ const PROJECTS = [
     location: 'Konnagar, Hooghly, West Bengal',
     scope: '1,200 MT Structural Steel',
     year: '2024',
-    image: '/proj-steel-fab.jpg',
+    image: '/proj-steel-fab-v2.jpg',
     imageAlt: 'Structural steel fabrication project at night with cranes',
     featured: true,
     tags: ['IS:800', 'AWS D1.1', 'NDE Certified'],
@@ -28,7 +28,7 @@ const PROJECTS = [
     location: 'Ludhiana, Punjab',
     scope: '28,000 sqm PEB Complex',
     year: '2024',
-    image: '/proj-industrial-bldg.jpg',
+    image: '/proj-industrial-bldg-v2.jpg',
     imageAlt: 'Industrial warehouse building at sunset with orange sky',
     featured: false,
     tags: ['Pre-Engineered', 'Turnkey', 'AISC'],
@@ -54,7 +54,7 @@ const PROJECTS = [
     location: 'Suratgarh, Rajasthan',
     scope: '2,200 MT · Power Plant Structure',
     year: '2022',
-    image: '/proj-plant-erection.jpg',
+    image: '/proj-plant-erection-v2.jpg',
     imageAlt: 'Industrial plant erection with cranes at golden hour',
     featured: false,
     tags: ['Heavy Lift', 'EPC', '50MT Crane'],
@@ -262,7 +262,7 @@ export default function FeaturedProjects() {
         <div className="container container--content">
           <div className={styles.ctaInner}>
             <div className={styles.ctaText}>
-              <span className={styles.ctaNum}>850+</span>
+              <span className={styles.ctaNum}>50+</span>
               <span className={styles.ctaLabel}>Projects delivered across India since 1998</span>
             </div>
             <Link

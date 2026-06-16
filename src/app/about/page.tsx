@@ -51,7 +51,7 @@ const FACILITY_SPECS = [
 ];
 
 const WORKFORCE_STATS = [
-  { number: '400+', label: 'Total Workforce' },
+  { number: '150+', label: 'Total Workforce' },
   { number: '60+', label: 'Certified Welders (ASME/IS)' },
   { number: '8', label: 'Simultaneous Active Sites' },
   { number: '24/7', label: 'Site Operations Capability' },
@@ -149,7 +149,7 @@ export default function AboutPage() {
         <div className="container container--content">
           <span className="overline">Our People</span>
           <h2 id="workforce-heading" className={`${styles.sectionHeading} ${styles.workforceHeading}`}>
-            400+ Specialists. One Standard.
+            150+ Specialists. One Standard.
           </h2>
           <div className={styles.workforceGrid}>
             {WORKFORCE_STATS.map((s) => (

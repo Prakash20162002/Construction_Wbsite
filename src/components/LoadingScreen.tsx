@@ -61,13 +61,14 @@ export default function LoadingScreen() {
         {/* Logo */}
         <div className={styles.logoWrap}>
           <Image
-            src="/logo.png"
+            src="/logo-v2.png"
             alt="Bhandari Enterprise"
             width={280}
             height={280}
             priority
             className={styles.logo}
           />
+          <div className={styles.logoGlint} aria-hidden="true" />
         </div>
 
         {/* Tag line */}

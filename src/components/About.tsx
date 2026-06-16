@@ -13,7 +13,7 @@ const pillars = [
   {
     icon: Users,
     title: 'Expert Workforce',
-    desc: 'Over 400 trained engineers, welders, and erection specialists — certified and safety-compliant.',
+    desc: 'Over 150 trained engineers, welders, and erection specialists — certified and safety-compliant.',
   },
   {
     icon: Hammer,
@@ -65,7 +65,7 @@ export default function About() {
                 facility in Konnagar, Hooghly, serving sectors across petrochemical,
                 power, logistics and civil infrastructure.
               </p>
-              <a href="#contact" className="btn btn--primary" style={{ marginTop: 'var(--space-6)', alignSelf: 'flex-start' }}>
+              <a href="#featured-projects" className="btn btn--primary" style={{ marginTop: 'var(--space-6)', alignSelf: 'flex-start' }}>
                 Work With Us
               </a>
             </div>

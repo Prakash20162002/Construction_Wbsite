@@ -21,7 +21,7 @@ const ALL_PROJECTS = [
     year: '2024',
     scaleRange: '>1000',
     client: 'National Logistics Corporation',
-    image: '/proj-industrial-bldg.jpg',
+    image: '/proj-industrial-bldg-v2.jpg',
     summary: 'Design and erection of a 28,000 sqm multi-bay logistics warehouse with 12m clear height, 30T EOT crane provision, and insulated roofing system — completed 3 weeks ahead of schedule.',
     highlights: ['28,000 sqm covered area', '1,200 MT structural steel', '3 weeks ahead of schedule', 'Zero safety incidents'],
     featured: true,
@@ -89,7 +89,7 @@ const ALL_PROJECTS = [
     year: '2022',
     scaleRange: '>1000',
     client: 'State Power Generation Corp',
-    image: '/proj-plant-erection.jpg',
+    image: '/proj-plant-erection-v2.jpg',
     summary: 'Complete structural steel supporting framework for a 660 MW thermal power plant — including turbine hall, boiler house structure, coal bunker support, and ESP housing.',
     highlights: ['2,200 MT steel fabricated', '660 MW plant support', 'Turbine + boiler structures', 'Corrosion protection system'],
     featured: false,
@@ -178,11 +178,11 @@ export default function ProjectsPage() {
     <>
       <PageHero
         overline="Project Portfolio"
-        title="850+ Projects."
+        title="50+ Projects."
         titleAccent="Every Sector. Across India."
         breadcrumbs={[{ label: 'Projects' }]}
         stats={[
-          { number: '850+', label: 'Projects Completed' },
+          { number: '50+', label: 'Projects Completed' },
           { number: '15+', label: 'States Covered' },
           { number: '2,400T', label: 'Steel Annually' },
           { number: '2,200T', label: 'Largest Single Project' },

@@ -19,7 +19,7 @@ export const STATS = [
   { number: '26+', label: 'Years of Excellence' },
   { number: '50+', label: 'Projects Completed' },
   { number: '40+', label: 'Industry Clients' },
-  { number: '200T', label: 'Steel Fabricated Annually' },
+  { number: '500T', label: 'Steel Fabricated Annually' },
 ];
 
 export const SERVICES = [

@@ -33,7 +33,7 @@ export default function Hero() {
       {/* ── BACKGROUND ─────────────────────────────────────────── */}
       <div className={styles.bgWrap} aria-hidden="true">
         <Image
-          src="/hero-bg.jpg"
+          src="/hero-bg-v2.jpg"
           alt=""
           fill
           priority

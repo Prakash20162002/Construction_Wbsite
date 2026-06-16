@@ -34,7 +34,7 @@ const CAPABILITY_DETAIL: Record<string, {
   },
   'structural-erection': {
     overview:
-      'Our erection division has successfully erected over 850+ steel structures across industrial, commercial, and infrastructure sectors. With a fleet of mobile cranes, trained riggers, and certified erection supervisors, we deliver safe, on-schedule erection of complex assemblies.',
+      'Our erection division has successfully erected over 50+ steel structures across industrial, commercial, and infrastructure sectors. With a fleet of mobile cranes, trained riggers, and certified erection supervisors, we deliver safe, on-schedule erection of complex assemblies.',
     scope: [
       'Pre-engineered building (PEB) erection',
       'Multi-storey industrial shed erection',

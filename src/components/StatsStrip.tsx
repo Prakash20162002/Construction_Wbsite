@@ -11,13 +11,13 @@ const STATS = [
     sub: 'Est. 1998',
   },
   {
-    number: '850',
+    number: '50',
     suffix: '+',
     label: 'Projects Completed',
     sub: 'Across India',
   },
   {
-    number: '400',
+    number: '150',
     suffix: '+',
     label: 'Skilled Workforce',
     sub: 'Permanent & Contract',

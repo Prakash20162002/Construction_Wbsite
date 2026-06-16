@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronRight, ArrowDown } from 'lucide-react';
@@ -60,6 +60,14 @@ const STAGES = [
 export default function ExecutionFlow() {
   const sectionRef = useRef<HTMLElement>(null);
   const stageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [mfgSlideIdx, setMfgSlideIdx] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMfgSlideIdx((prev) => (prev === 0 ? 1 : 0));
+    }, 4500);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -133,14 +141,33 @@ export default function ExecutionFlow() {
               {/* ── Image Panel ── */}
               <div className={styles.imageWrap}>
                 <div className={styles.imageInner}>
-                  <Image
-                    src={stage.image}
-                    alt={stage.imageAlt}
-                    fill
-                    sizes="(max-width: 1023px) 100vw, 50vw"
-                    className={styles.stageImage}
-                    quality={85}
-                  />
+                  {i === 0 ? (
+                    <>
+                      {['/stage-manufacturing-1.jpg', '/stage-manufacturing-2.jpg'].map((imgSrc, slideIdx) => (
+                        <Image
+                          key={imgSrc}
+                          src={imgSrc}
+                          alt={stage.imageAlt}
+                          fill
+                          sizes="(max-width: 1023px) 100vw, 50vw"
+                          className={`${styles.stageImage} ${styles.slideImage} ${
+                            mfgSlideIdx === slideIdx ? styles.slideActive : ''
+                          }`}
+                          quality={85}
+                          priority={slideIdx === 0}
+                        />
+                      ))}
+                    </>
+                  ) : (
+                    <Image
+                      src={stage.image}
+                      alt={stage.imageAlt}
+                      fill
+                      sizes="(max-width: 1023px) 100vw, 50vw"
+                      className={styles.stageImage}
+                      quality={85}
+                    />
+                  )}
                   {/* Overlay */}
                   <div className={styles.imageOverlay} aria-hidden="true" />
                   {/* Stage label on image */}
@@ -153,6 +180,23 @@ export default function ExecutionFlow() {
                     <span className={styles.statNum}>{stage.stat.number}</span>
                     <span className={styles.statLabel}>{stage.stat.label}</span>
                   </div>
+                  {/* Slide controls for Stage 01 */}
+                  {i === 0 && (
+                    <div className={styles.slideDots} aria-label="Slideshow controls">
+                      {[0, 1].map((idx) => (
+                        <button
+                          key={idx}
+                          className={`${styles.slideDot} ${mfgSlideIdx === idx ? styles.slideDotActive : ''}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setMfgSlideIdx(idx);
+                          }}
+                          aria-label={`Go to slide ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
 
