@@ -56,12 +56,27 @@ export default function TrustIndicators() {
             </p>
           </div>
           <div className={`${styles.clientsGrid} reveal-group`} role="list" aria-label="Our clients">
-            {CLIENTS.map((client) => (
-              <div key={client.name} className={`reveal ${styles.clientItem}`} role="listitem">
-                <span className={styles.clientName}>{client.name}</span>
-                <span className={styles.clientSector}>{client.sector}</span>
-              </div>
-            ))}
+            {CLIENTS.map((client) => {
+              // Generate initials for logo block
+              const initials = client.name
+                .split(' ')
+                .map((word) => word[0])
+                .join('')
+                .substring(0, 3);
+              return (
+                <div key={client.name} className={`reveal ${styles.clientItem}`} role="listitem">
+                  <div className={styles.clientLogoBlock}>
+                    <div className={styles.logoBadge} aria-hidden="true">
+                      {initials}
+                    </div>
+                    <div className={styles.clientMeta}>
+                      <span className={styles.clientName}>{client.name}</span>
+                      <span className={styles.clientSector}>{client.sector}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import About from '@/components/About';
 import ExecutionFlow from '@/components/ExecutionFlow';
 import StatsStrip from '@/components/StatsStrip';
 import FeaturedProjects from '@/components/FeaturedProjects';
+import TrustIndicators from '@/components/TrustIndicators';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
@@ -21,6 +22,7 @@ export default function HomePage() {
       <ExecutionFlow />
       <StatsStrip />
       <FeaturedProjects />
+      <TrustIndicators />
       <WhyChooseUs />
       <CTASection />
       <Footer />
