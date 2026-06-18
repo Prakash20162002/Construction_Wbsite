@@ -19,6 +19,7 @@ export async function POST(request: Request) {
     const smtpPort = parseInt(process.env.SMTP_PORT || '587');
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
+    const smtpFrom = process.env.SMTP_FROM || smtpUser;
     const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL || 'gourbhandari68@gmail.com';
 
     // If no credentials are set up, log the details to the server console and mock success
@@ -45,25 +46,32 @@ export async function POST(request: Request) {
       maxMessages: 10,
     });
 
+    const cleanName = String(name).replace(/"/g, "'").trim();
+    const cleanCompany = company ? String(company).replace(/"/g, "'").trim() : '';
+    const cleanEmail = String(email).replace(/"/g, "'").trim();
+    const displayName = cleanCompany ? cleanCompany : cleanName;
+
+    // Build the subject: prepend company name if available
+    const subjectPrefix = cleanCompany ? `${cleanCompany} — ` : '';
+    const companySubject = `${subjectPrefix}New Construction Inquiry from ${cleanName}`;
+
     // 1. Notification Email to the Company (gourbhandari68@gmail.com)
     const companyMailOptions = {
-      from: `"${name}" <${smtpUser}>`, // Must match SMTP user to prevent authentication errors, replyTo is the client
-      replyTo: email,
+      from: `"${displayName}" <${smtpFrom}>`, // Set sender as SMTP_FROM to prevent SMTP relay rejection
+      replyTo: `"${cleanName}" <${cleanEmail}>`,
       to: receiverEmail,
-      subject: `New Website Enquiry: ${service || 'General'} from ${name}`,
+      subject: companySubject,
       text: `
-New Project Enquiry Received
+New Construction Site Request Received
 
 Details:
 ------------------------------------------
-Name: ${name}
-Company: ${company || 'N/A'}
-Email: ${email}
+Name: ${cleanName}
+Company: ${cleanCompany || 'N/A'}
+Email: ${cleanEmail}
 Phone: ${phone || 'N/A'}
 Service: ${service || 'General Enquiry'}
-Project Size/Value: ${projectSize || 'N/A'}
-Location: ${location || 'N/A'}
-Date: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+${service === 'Callback Request' ? '' : `Project Size/Value: ${projectSize || 'N/A'}\nLocation: ${location || 'N/A'}\n`}Date: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
 
 Message/Scope:
 ${message}
@@ -72,7 +80,7 @@ This email was generated from the website contact form.
       `,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #1a2438; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e1e8f5; border-radius: 8px;">
-          <h2 style="color: #e85000; border-bottom: 2px solid #e85000; padding-bottom: 10px; margin-top: 0;">New Project Enquiry</h2>
+          <h2 style="color: #e85000; border-bottom: 2px solid #e85000; padding-bottom: 10px; margin-top: 0;">New Construction Site Request</h2>
           <p>You have received a new enquiry from the website contact form.</p>
           
           <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
@@ -80,10 +88,12 @@ This email was generated from the website contact form.
               <td style="padding: 10px; font-weight: bold; border: 1px solid #e1e8f5; width: 180px;">Name</td>
               <td style="padding: 10px; border: 1px solid #e1e8f5;">${name}</td>
             </tr>
+            ${service !== 'Callback Request' ? `
             <tr>
               <td style="padding: 10px; font-weight: bold; border: 1px solid #e1e8f5;">Company</td>
               <td style="padding: 10px; border: 1px solid #e1e8f5;">${company || 'N/A'}</td>
             </tr>
+            ` : ''}
             <tr style="background: #f7fafc;">
               <td style="padding: 10px; font-weight: bold; border: 1px solid #e1e8f5;">Email</td>
               <td style="padding: 10px; border: 1px solid #e1e8f5;"><a href="mailto:${email}" style="color: #e85000;">${email}</a></td>
@@ -96,6 +106,7 @@ This email was generated from the website contact form.
               <td style="padding: 10px; font-weight: bold; border: 1px solid #e1e8f5;">Service Required</td>
               <td style="padding: 10px; border: 1px solid #e1e8f5;">${service || 'General Enquiry'}</td>
             </tr>
+            ${service !== 'Callback Request' ? `
             <tr>
               <td style="padding: 10px; font-weight: bold; border: 1px solid #e1e8f5;">Project Value</td>
               <td style="padding: 10px; border: 1px solid #e1e8f5;">${projectSize || 'N/A'}</td>
@@ -104,6 +115,7 @@ This email was generated from the website contact form.
               <td style="padding: 10px; font-weight: bold; border: 1px solid #e1e8f5;">Location</td>
               <td style="padding: 10px; border: 1px solid #e1e8f5;">${location || 'N/A'}</td>
             </tr>
+            ` : ''}
           </table>
           
           <h3 style="color: #1a2438; margin-top: 20px;">Project Details / Message:</h3>
@@ -118,21 +130,18 @@ This email was generated from the website contact form.
 
     // 2. Auto-Reply Confirmation (ARC) to the User
     const userMailOptions = {
-      from: `"Bhandari Enterprise" <${smtpUser}>`,
-      to: email,
+      from: `"Bhandari Enterprise" <${smtpFrom}>`,
+      to: cleanEmail,
       subject: `We have received your enquiry — Bhandari Enterprise`,
       text: `
-Dear ${name},
+Dear ${cleanName},
 
 Thank you for reaching out to Bhandari Enterprise. We have successfully received your project enquiry and our engineering team is reviewing the details.
 
 Here is a copy of the details you submitted:
 ------------------------------------------
-Company: ${company || 'N/A'}
-Service Required: ${service || 'General Enquiry'}
-Project Value: ${projectSize || 'N/A'}
-Location: ${location || 'N/A'}
-Message/Description:
+${service === 'Callback Request' ? '' : `Company: ${company || 'N/A'}\n`}Service Required: ${service || 'General Enquiry'}
+${service === 'Callback Request' ? '' : `Project Value: ${projectSize || 'N/A'}\nLocation: ${location || 'N/A'}\n`}Message/Description:
 ${message}
 ------------------------------------------
 
@@ -157,14 +166,17 @@ Konnagar, West Bengal — 712235
             <h3 style="color: #e85000; margin-top: 0; font-size: 15px; border-bottom: 1px solid #e1e8f5; padding-bottom: 8px;">Submitted Enquiry Details</h3>
             
             <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+              ${service !== 'Callback Request' ? `
               <tr>
                 <td style="padding: 6px 0; font-weight: bold; color: #718096; width: 140px;">Company</td>
                 <td style="padding: 6px 0; color: #1a2438;">${company || 'N/A'}</td>
               </tr>
+              ` : ''}
               <tr>
-                <td style="padding: 6px 0; font-weight: bold; color: #718096;">Service</td>
+                <td style="padding: 6px 0; font-weight: bold; color: #718096; ${service === 'Callback Request' ? 'width: 140px;' : ''}">Service</td>
                 <td style="padding: 6px 0; color: #1a2438;">${service || 'General Enquiry'}</td>
               </tr>
+              ${service !== 'Callback Request' ? `
               <tr>
                 <td style="padding: 6px 0; font-weight: bold; color: #718096;">Project Value</td>
                 <td style="padding: 6px 0; color: #1a2438;">${projectSize || 'N/A'}</td>
@@ -173,6 +185,7 @@ Konnagar, West Bengal — 712235
                 <td style="padding: 6px 0; font-weight: bold; color: #718096;">Location</td>
                 <td style="padding: 6px 0; color: #1a2438;">${location || 'N/A'}</td>
               </tr>
+              ` : ''}
             </table>
             
             <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed #e1e8f5;">

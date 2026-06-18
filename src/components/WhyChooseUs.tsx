@@ -31,8 +31,8 @@ const FEATURES = [
   },
   {
     icon: Wrench,
-    title: '26+ Years Experience',
-    desc: 'Deep domain knowledge accumulated since 1998 across 50+ industrial projects nationwide.',
+    title: '20+ Years Experience',
+    desc: 'Deep domain knowledge accumulated since 2006 across 50+ industrial projects nationwide.',
     accent: false,
   },
   {

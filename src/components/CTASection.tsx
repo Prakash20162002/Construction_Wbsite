@@ -67,7 +67,7 @@ export default function CTASection() {
           <div className={styles.chips} aria-label="Trust indicators">
             {[
               'Quality Assured',
-              '26+ Years Experience',
+              '20+ Years Experience',
               '50+ Projects Delivered',
               'Pan-India Operations',
             ].map((chip) => (
@@ -84,7 +84,7 @@ export default function CTASection() {
             <div className={styles.visualDivider} />
             <div className={styles.visualStats}>
               <div className={styles.vStat}>
-                <span className={styles.vNum}>26+</span>
+                <span className={styles.vNum}>20+</span>
                 <span className={styles.vLabel}>Years</span>
               </div>
               <div className={styles.vDivider} />

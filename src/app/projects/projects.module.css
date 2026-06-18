@@ -240,6 +240,13 @@
   text-transform: uppercase;
   margin-top: auto;
   transition: gap var(--duration-fast);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  width: fit-content;
+  text-align: left;
+  line-height: inherit;
 }
 
 .cardCta:hover {

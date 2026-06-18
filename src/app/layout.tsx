@@ -9,7 +9,7 @@ import ScrollRevealObserver from '@/components/ScrollRevealObserver';
 export const metadata: Metadata = {
   title: 'Bhandari Enterprise — Industrial Engineering & Steel Fabrication',
   description:
-    'Bhandari Enterprise is a leading industrial steel fabrication, erection, manufacturing and civil construction company based in Konnagar, West Bengal. Serving clients across India since 1998.',
+    'Bhandari Enterprise is a leading industrial steel fabrication, erection, manufacturing and civil construction company based in Konnagar, West Bengal. Serving clients across India since 2006.',
   keywords: [
     'steel fabrication Kolkata West Bengal',
     'structural erection India',
@@ -43,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-IN">
+    <html lang="en-IN" data-scroll-behavior="smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

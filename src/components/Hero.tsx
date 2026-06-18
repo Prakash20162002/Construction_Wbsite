@@ -77,7 +77,7 @@ export default function Hero() {
           <div className={styles.proofPills} aria-label="Trust credentials">
             {[
               'Quality Certified',
-              '26+ Years Established',
+              '20+ Years Established',
               '50+ Projects Delivered',
             ].map((pill) => (
               <span key={pill} className={styles.pill}>{pill}</span>

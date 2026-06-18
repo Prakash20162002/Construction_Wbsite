@@ -3,8 +3,9 @@
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MapPin, ChevronRight, ArrowRight } from 'lucide-react';
+import { MapPin, ChevronRight, ChevronLeft, ArrowRight } from 'lucide-react';
 import styles from './FeaturedProjects.module.css';
+import ProjectDetailsModal, { Project } from './ProjectDetailsModal';
 
 const PROJECTS = [
   {
@@ -19,6 +20,10 @@ const PROJECTS = [
     imageAlt: 'Structural steel fabrication project at night with cranes',
     featured: true,
     tags: ['IS:800', 'AWS D1.1', 'NDE Certified'],
+    client: 'Bhandari Enterprise Manufacturing Facility',
+    sector: 'Manufacturing',
+    summary: 'In-house high-precision fabrication of heavy structural steel components including columns, box girders, and customized truss members complying with IS:800 and AWS D1.1 standards.',
+    highlights: ['1,200 MT steel fabricated', 'Ultrasonic and magnetic particle tested', '100% weld compliance rate', 'Just-in-time delivery to site'],
   },
   {
     id: 'industrial-building',
@@ -32,6 +37,10 @@ const PROJECTS = [
     imageAlt: 'Industrial warehouse building at sunset with orange sky',
     featured: false,
     tags: ['Pre-Engineered', 'Turnkey', 'AISC'],
+    client: 'National Logistics Corporation',
+    sector: 'Logistics',
+    summary: 'EPC execution of a large-scale pre-engineered industrial warehouse building complex. Built to withstand high wind loads and heavy EOT crane movements.',
+    highlights: ['28,000 sqm covered area', 'Delivered 3 weeks ahead of schedule', 'AISC compliant steel erection', 'Full turnkey civil and superstructure package'],
   },
   {
     id: 'pipe-rack',
@@ -45,6 +54,10 @@ const PROJECTS = [
     imageAlt: 'Complex industrial pipe rack installation at a refinery at dusk',
     featured: false,
     tags: ['Petrochemical', 'ASME B31.3', 'Process Plant'],
+    client: 'ChemProcess India Ltd',
+    sector: 'Petrochemical',
+    summary: 'Design, fabrication, and heavy lift erection of multi-level industrial pipe racks, chemical process equipment supports, and access platforms.',
+    highlights: ['940 MT structural steel work', 'ASME B31.3 compliance for piping clearances', 'Multi-level high elevation structures', 'Corrosion-resistant epoxy coatings'],
   },
   {
     id: 'plant-erection',
@@ -58,6 +71,10 @@ const PROJECTS = [
     imageAlt: 'Industrial plant erection with cranes at golden hour',
     featured: false,
     tags: ['Heavy Lift', 'EPC', '50MT Crane'],
+    client: 'State Power Generation Corp',
+    sector: 'Power',
+    summary: 'Heavy structural erection and equipment mounting for a thermal power plant. Managed heavy lifts up to 50MT using specialized site cranes under stringent safety regulations.',
+    highlights: ['2,200 MT total steel weight', '660 MW power plant support', 'Completed within tight shutdown windows', 'Full EPC project responsibility'],
   },
   {
     id: 'infrastructure',
@@ -71,36 +88,103 @@ const PROJECTS = [
     imageAlt: 'Aerial view of large industrial infrastructure construction site',
     featured: false,
     tags: ['Civil & Steel', 'Logistics Hub', 'Turnkey'],
+    client: 'E-Commerce Logistics Pvt Ltd',
+    sector: 'Logistics',
+    summary: 'Turnkey industrial infrastructure development including land grading, foundation piling, grade slabs, and steel structural envelope for a premium distribution hub.',
+    highlights: ['42,000 sqm development across Phase I & II', '18-month overall timeline met', 'Turnkey civil and structural engineering', 'High-durability vacuum dewatered flooring'],
+  },
+  {
+    id: 'peb-factory-pune',
+    slug: 'peb-factory-building-pune',
+    category: 'PEB Erection',
+    title: 'Pre-Engineered Factory Building',
+    location: 'Pune, Maharashtra',
+    scope: '680 MT Steel Erection',
+    year: '2024',
+    image: '/proj-industrial-bldg-v2.jpg',
+    imageAlt: 'Industrial pre-engineered factory structure exterior',
+    featured: false,
+    tags: ['PEB', 'Overhead Cranes', 'Fast-Track'],
+    client: 'Varroc Engineering Ltd',
+    sector: 'Automotive',
+    summary: 'Fabrication and erection of a state-of-the-art pre-engineered factory building with high-capacity overhead crane supports and high-durability floor systems.',
+    highlights: ['680 MT structural steel erected', 'Overhead crane support systems', 'Completed in 120 days', 'Zero safety incidents'],
+  },
+  {
+    id: 'cold-storage-haryana',
+    slug: 'cold-storage-logistics-haryana',
+    category: 'Civil Construction',
+    title: 'Cold Storage & Logistics Facility',
+    location: 'Kundli, Haryana',
+    scope: '18,500 sqm Turnkey Project',
+    year: '2022',
+    image: '/proj-infrastructure.jpg',
+    imageAlt: 'Large scale cold storage logistics facility under construction',
+    featured: false,
+    tags: ['Cold Storage', 'Piling & Foundation', 'Turnkey'],
+    client: 'FreshFoods Logistics Ltd',
+    sector: 'Food & Beverage',
+    summary: 'Turnkey execution of a modern cold storage warehouse complex, including foundation piling, civil structure, structural steel roofing, and high-efficiency thermal insulation work.',
+    highlights: ['18,500 sqm covered area', 'Precision temperature-controlled floor slab', 'Insulated wall cladding', 'Complete civil & steel package'],
+  },
+  {
+    id: 'refinery-support-gujarat',
+    slug: 'refinery-expansion-structures-gujarat',
+    category: 'Industrial Manufacturing',
+    title: 'Refinery Expansion Structurals',
+    location: 'Jamnagar, Gujarat',
+    scope: '1,500 MT Steel Fabrication',
+    year: '2023',
+    image: '/proj-pipe-rack.jpg',
+    imageAlt: 'Refinery piping and heavy support structures at dusk',
+    featured: false,
+    tags: ['Refinery', 'High-Grade Steel', 'NDE Tested'],
+    client: 'Reliance Industries Limited',
+    sector: 'Petrochemical',
+    summary: 'Manufacturing and on-site assembly of high-strength structural steel assemblies, reactor platforms, and heavy-duty pipe racks for refinery expansion projects.',
+    highlights: ['1,500 MT high-grade steel fabricated', '100% weld ultrasonic inspection', 'Tight alignment tolerances met', 'Specialized polyurethane coatings'],
   },
 ] as const;
 
 export default function FeaturedProjects() {
-  const cardRefs = useRef<(HTMLElement | null)[]>([]);
-  const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Autoplay intervals for showcase
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    cardRefs.current.forEach((ref) => ref && observer.observe(ref));
-    return () => observer.disconnect();
-  }, []);
+    if (isHovered || isModalOpen) return;
+    const interval = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % PROJECTS.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [isHovered, isModalOpen]);
 
-  const featured = PROJECTS[0];
-  const grid = PROJECTS.slice(1);
+  const openModal = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleProjectSelect = (idx: number) => {
+    setActiveIdx(idx);
+    setTimeout(() => {
+      const showcaseEl = document.getElementById('main-project-showcase');
+      if (showcaseEl) {
+        showcaseEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 50);
+  };
+
+  const activeProj = PROJECTS[activeIdx];
 
   return (
     <section
       className={styles.section}
       id="featured-projects"
       aria-labelledby="projects-heading"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {/* ── HEADER ──────────────────────────────────────────── */}
       <div className={styles.header}>
@@ -130,129 +214,208 @@ export default function FeaturedProjects() {
         </div>
       </div>
 
-      {/* ── FEATURED CARD (HERO) ─────────────────────────────── */}
-      <div className={styles.featuredWrap}>
-        <div className="container container--content">
-          <article
-            ref={(el) => { cardRefs.current[0] = el; }}
-            className={`${styles.featuredCard} ${styles.revealCard}`}
-            aria-label={`Featured project: ${featured.title}`}
-          >
-            {/* Image */}
-            <div className={styles.featuredImg}>
-              <Image
-                src={featured.image}
-                alt={featured.imageAlt}
-                fill
-                priority
-                sizes="(max-width: 1023px) 100vw, 60vw"
-                className={styles.featuredImgEl}
-                quality={90}
-              />
-              <div className={styles.featuredImgOverlay} />
-              {/* Floating year badge */}
-              <div className={styles.yearBadge} aria-hidden="true">
-                {featured.year}
-              </div>
+      {/* ── DUAL AUTO-SLIDING ROWS (Upper left-to-right, Lower right-to-left) ── */}
+      <div className={styles.marqueeSection}>
+        <div className={styles.marqueeRowContainer}>
+          {/* Row 1: Left to Right */}
+          <div className={styles.marqueeRow}>
+            <div className={`${styles.marqueeTrack} ${styles.leftToRight}`}>
+              {/* Set 1 */}
+              {PROJECTS.map((proj, idx) => (
+                <div
+                  key={`${proj.id}-r1-1`}
+                  className={`${styles.gridCard} ${idx === activeIdx ? styles.gridCardActive : ''}`}
+                  onClick={() => handleProjectSelect(idx)}
+                >
+                  <div className={styles.cardImgWrap}>
+                    <Image
+                      src={proj.image}
+                      alt={proj.imageAlt}
+                      fill
+                      sizes="(max-width: 767px) 80vw, 300px"
+                      className={styles.cardThumbnail}
+                      quality={75}
+                    />
+                    <div className={styles.cardOverlay} />
+                    {idx === activeIdx && <div className={styles.activeGlow} />}
+                  </div>
+                  <div className={styles.cardInfo}>
+                    <span className={styles.cardCat}>{proj.category}</span>
+                    <h5 className={styles.cardTitle}>{proj.title}</h5>
+                    <span className={styles.cardLoc}>
+                      <MapPin size={11} aria-hidden="true" />
+                      {proj.location.split(',')[0]}
+                    </span>
+                  </div>
+                </div>
+              ))}
+              {/* Set 2 (Duplicated for seamless loop) */}
+              {PROJECTS.map((proj, idx) => (
+                <div
+                  key={`${proj.id}-r1-2`}
+                  className={`${styles.gridCard} ${idx === activeIdx ? styles.gridCardActive : ''}`}
+                  onClick={() => handleProjectSelect(idx)}
+                >
+                  <div className={styles.cardImgWrap}>
+                    <Image
+                      src={proj.image}
+                      alt={proj.imageAlt}
+                      fill
+                      sizes="(max-width: 767px) 80vw, 300px"
+                      className={styles.cardThumbnail}
+                      quality={75}
+                    />
+                    <div className={styles.cardOverlay} />
+                    {idx === activeIdx && <div className={styles.activeGlow} />}
+                  </div>
+                  <div className={styles.cardInfo}>
+                    <span className={styles.cardCat}>{proj.category}</span>
+                    <h5 className={styles.cardTitle}>{proj.title}</h5>
+                    <span className={styles.cardLoc}>
+                      <MapPin size={11} aria-hidden="true" />
+                      {proj.location.split(',')[0]}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
+          </div>
 
-            {/* Content */}
-            <div className={styles.featuredContent}>
-              <div className={styles.featuredCat}>{featured.category}</div>
-              <h3 className={styles.featuredTitle}>{featured.title}</h3>
+          {/* Row 2: Right to Left */}
+          <div className={styles.marqueeRow}>
+            <div className={`${styles.marqueeTrack} ${styles.rightToLeft}`}>
+              {/* Set 1 (Reversed for visual variation) */}
+              {[...PROJECTS].reverse().map((proj) => {
+                const idx = PROJECTS.findIndex((p) => p.id === proj.id);
+                return (
+                  <div
+                    key={`${proj.id}-r2-1`}
+                    className={`${styles.gridCard} ${idx === activeIdx ? styles.gridCardActive : ''}`}
+                    onClick={() => handleProjectSelect(idx)}
+                  >
+                    <div className={styles.cardImgWrap}>
+                      <Image
+                        src={proj.image}
+                        alt={proj.imageAlt}
+                        fill
+                        sizes="(max-width: 767px) 80vw, 300px"
+                        className={styles.cardThumbnail}
+                        quality={75}
+                      />
+                      <div className={styles.cardOverlay} />
+                      {idx === activeIdx && <div className={styles.activeGlow} />}
+                    </div>
+                    <div className={styles.cardInfo}>
+                      <span className={styles.cardCat}>{proj.category}</span>
+                      <h5 className={styles.cardTitle}>{proj.title}</h5>
+                      <span className={styles.cardLoc}>
+                        <MapPin size={11} aria-hidden="true" />
+                        {proj.location.split(',')[0]}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+              {/* Set 2 (Duplicated for seamless loop) */}
+              {[...PROJECTS].reverse().map((proj) => {
+                const idx = PROJECTS.findIndex((p) => p.id === proj.id);
+                return (
+                  <div
+                    key={`${proj.id}-r2-2`}
+                    className={`${styles.gridCard} ${idx === activeIdx ? styles.gridCardActive : ''}`}
+                    onClick={() => handleProjectSelect(idx)}
+                  >
+                    <div className={styles.cardImgWrap}>
+                      <Image
+                        src={proj.image}
+                        alt={proj.imageAlt}
+                        fill
+                        sizes="(max-width: 767px) 80vw, 300px"
+                        className={styles.cardThumbnail}
+                        quality={75}
+                      />
+                      <div className={styles.cardOverlay} />
+                      {idx === activeIdx && <div className={styles.activeGlow} />}
+                    </div>
+                    <div className={styles.cardInfo}>
+                      <span className={styles.cardCat}>{proj.category}</span>
+                      <h5 className={styles.cardTitle}>{proj.title}</h5>
+                      <span className={styles.cardLoc}>
+                        <MapPin size={11} aria-hidden="true" />
+                        {proj.location.split(',')[0]}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
 
-              <div className={styles.featuredMeta}>
+      {/* ── MAIN SHOWCASE (Now positioned below the sliding selectors) ── */}
+      <div id="main-project-showcase" className={styles.mainShowcase}>
+        <div className="container container--content">
+          <div className={styles.showcaseInner}>
+            {/* Left side details */}
+            <div className={styles.showcaseDetails}>
+              <span className={styles.showcaseCat}>{activeProj.category}</span>
+              <h3 className={styles.showcaseTitle}>{activeProj.title}</h3>
+
+              <div className={styles.showcaseMeta}>
                 <span className={styles.metaItem}>
-                  <MapPin size={12} aria-hidden="true" />
-                  {featured.location}
+                  <MapPin size={13} aria-hidden="true" />
+                  {activeProj.location}
                 </span>
-                <span className={styles.metaScope}>{featured.scope}</span>
+                <span className={styles.metaScope}>{activeProj.scope}</span>
               </div>
 
-              <div className={styles.featuredTags}>
-                {featured.tags.map((tag) => (
+              <p className={styles.showcaseDesc}>{activeProj.summary}</p>
+
+              <div className={styles.showcaseTags}>
+                {activeProj.tags.map((tag) => (
                   <span key={tag} className={styles.tag}>{tag}</span>
                 ))}
               </div>
 
-              <Link
-                href={`/projects/${featured.slug}`}
-                className={styles.projectLink}
-                id="featured-project-primary"
-                aria-label={`View details for ${featured.title}`}
-              >
-                View Project Details
-                <ChevronRight size={16} strokeWidth={2.5} aria-hidden="true" />
-              </Link>
+              <div className={styles.showcaseActions}>
+                <button
+                  onClick={() => openModal(activeProj)}
+                  className="btn btn--primary"
+                  id="featured-project-primary"
+                  aria-label={`View details for ${activeProj.title}`}
+                >
+                  View Project Details
+                  <ChevronRight size={16} strokeWidth={2.5} aria-hidden="true" />
+                </button>
+              </div>
             </div>
-          </article>
-        </div>
-      </div>
 
-      {/* ── PROJECT GRID ─────────────────────────────────────── */}
-      <div className={styles.gridWrap}>
-        <div className="container container--content">
-          <div className={styles.projectGrid}>
-            {grid.map((project, i) => (
-              <article
-                key={project.id}
-                ref={(el) => { cardRefs.current[i + 1] = el; }}
-                className={`${styles.projectCard} ${styles.revealCard}`}
-                style={{ transitionDelay: `${i * 0.1}s` }}
-                aria-label={`Project: ${project.title}`}
-                onMouseEnter={() => setActiveIdx(i)}
-                onMouseLeave={() => setActiveIdx(null)}
-              >
-                {/* Image */}
-                <div className={styles.cardImg}>
-                  <Image
-                    src={project.image}
-                    alt={project.imageAlt}
-                    fill
-                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 25vw"
-                    className={`${styles.cardImgEl} ${activeIdx === i ? styles.cardImgZoom : ''}`}
-                    quality={80}
-                  />
-                  <div className={`${styles.cardOverlay} ${activeIdx === i ? styles.cardOverlayActive : ''}`} />
-
-                  {/* Category pill on image */}
-                  <div className={styles.cardCatPill}>{project.category}</div>
-
-                  {/* Year */}
-                  <div className={styles.cardYear}>{project.year}</div>
-                </div>
-
-                {/* Content */}
-                <div className={styles.cardContent}>
-                  <h3 className={styles.cardTitle}>{project.title}</h3>
-
-                  <div className={styles.cardMeta}>
-                    <span className={styles.metaItem}>
-                      <MapPin size={11} aria-hidden="true" />
-                      {project.location}
-                    </span>
-                  </div>
-
-                  <div className={styles.cardScope}>{project.scope}</div>
-
-                  <div className={styles.cardTags}>
-                    {project.tags.map((tag) => (
-                      <span key={tag} className={styles.tag}>{tag}</span>
-                    ))}
-                  </div>
-
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className={styles.cardLink}
-                    id={`project-card-${project.id}`}
-                    aria-label={`View ${project.title} project details`}
+            {/* Right side visual slide */}
+            <div className={styles.showcaseVisual}>
+              <div className={styles.imageFrame}>
+                {PROJECTS.map((proj, idx) => (
+                  <div
+                    key={proj.id}
+                    className={`${styles.imageSlide} ${idx === activeIdx ? styles.imageSlideActive : ''}`}
+                    aria-hidden={idx !== activeIdx}
                   >
-                    View Details
-                    <ChevronRight size={14} aria-hidden="true" />
-                  </Link>
-                </div>
-              </article>
-            ))}
+                    <Image
+                      src={proj.image}
+                      alt={proj.imageAlt}
+                      fill
+                      loading="eager"
+                      sizes="(max-width: 1023px) 100vw, 50vw"
+                      className={styles.slideImage}
+                      quality={85}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className={styles.yearBadge} aria-hidden="true">
+                {activeProj.year}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -263,7 +426,7 @@ export default function FeaturedProjects() {
           <div className={styles.ctaInner}>
             <div className={styles.ctaText}>
               <span className={styles.ctaNum}>50+</span>
-              <span className={styles.ctaLabel}>Projects delivered across India since 1998</span>
+              <span className={styles.ctaLabel}>Projects delivered across India since 2006</span>
             </div>
             <Link
               href="/projects"
@@ -276,6 +439,13 @@ export default function FeaturedProjects() {
           </div>
         </div>
       </div>
+
+      {/* ── PROJECT DETAILS MODAL ────────────────────────────── */}
+      <ProjectDetailsModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        project={selectedProject}
+      />
     </section>
   );
 }

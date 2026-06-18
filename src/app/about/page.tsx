@@ -5,19 +5,18 @@ import type { Metadata } from 'next';
 import styles from './about.module.css';
 
 export const metadata: Metadata = {
-  title: 'About Us — 26 Years of Industrial Excellence | Bhandari Enterprise',
-  description: 'Bhandari Enterprise: Established 1998 in Konnagar, West Bengal. Expert steel fabrication, erection, and civil construction services.',
+  title: 'About Us — 20 Years of Industrial Excellence | Bhandari Enterprise',
+  description: 'Bhandari Enterprise: Established 2006 in Konnagar, West Bengal. Expert steel fabrication, erection, and civil construction services.',
 };
 
 const TIMELINE = [
-  { year: '1998', event: 'Founded in Konnagar, Hooghly, West Bengal by the Bhandari family with a focus on precision steel fabrication.' },
-  { year: '2003', event: 'Secured first large-scale PEB erection contract. Expanded to 80+ workforce and 2,000 sqm fabrication facility.' },
-  { year: '2008', event: 'Expanded fabrication operations and delivered first multi-state projects. Crossed ₹10 Cr annual turnover milestone.' },
-  { year: '2012', event: 'Expanded fabrication capacity with second CNC bay. First government infrastructure project completed.' },
-  { year: '2016', event: 'Completed 50th major project. Diversified into civil construction and manufacturing for process plants.' },
-  { year: '2020', event: 'Strengthened site safety systems and expanded civil construction capability across West Bengal.' },
-  { year: '2022', event: 'Annual steel fabrication capacity expanded. Active projects across multiple states simultaneously.' },
-  { year: '2024', event: '50+ projects delivered. 120+ skilled workforce. 26 years of uninterrupted industrial excellence.' },
+  { year: '2006', event: 'Founded in Konnagar, Hooghly, West Bengal by the Bhandari family with a focus on precision steel fabrication.' },
+  { year: '2010', event: 'Secured first large-scale PEB erection contract. Expanded to 80+ workforce and 2,000 sqm fabrication facility.' },
+  { year: '2014', event: 'Expanded fabrication operations and delivered first multi-state projects. Crossed ₹10 Cr annual turnover milestone.' },
+  { year: '2018', event: 'Expanded fabrication capacity with second CNC bay. First government infrastructure project completed.' },
+  { year: '2021', event: 'Completed 50th major project. Diversified into civil construction and manufacturing for process plants.' },
+  { year: '2023', event: 'Annual steel fabrication capacity expanded. Active projects across multiple states simultaneously.' },
+  { year: '2024', event: '50+ projects delivered. 120+ skilled workforce. 20 years of uninterrupted industrial excellence.' },
 ];
 
 
@@ -62,10 +61,10 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        overline="Est. 1998 · Konnagar, West Bengal"
+        overline="Est. 2006 · Konnagar, West Bengal"
         title="Built On Precision."
         titleAccent="Trusted By Industry."
-        lead="26 years of delivering steel fabrication, erection, manufacturing and civil construction across India's most demanding sectors."
+        lead="20 years of delivering steel fabrication, erection, manufacturing and civil construction across India's most demanding sectors."
         breadcrumbs={[{ label: 'About Us' }]}
       />
 
@@ -76,7 +75,7 @@ export default function AboutPage() {
             <div className={styles.storyLeft}>
               <span className="overline">Our Journey</span>
               <h2 id="story-heading" className={styles.storyHeading}>
-                26 Years of<br />Engineering Milestones
+                20 Years of<br />Engineering Milestones
               </h2>
               <p className={styles.storyLead}>
                 From a single fabrication bay in Konnagar, Hooghly to a pan-India industrial engineering

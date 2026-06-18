@@ -7,6 +7,7 @@ import { MapPin, ChevronRight } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import SectionCTA from '@/components/SectionCTA';
 import styles from './projects.module.css';
+import ProjectDetailsModal, { Project } from '@/components/ProjectDetailsModal';
 
 const ALL_PROJECTS = [
   {
@@ -160,6 +161,13 @@ export default function ProjectsPage() {
   const [scale, setScale] = useState('All Scales');
   const [year, setYear] = useState('All Years');
   const [visible, setVisible] = useState(9);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
 
   const filtered = useMemo(() => {
     return ALL_PROJECTS.filter((p) => {
@@ -261,7 +269,7 @@ export default function ProjectsPage() {
           ) : (
             <>
               <div className={styles.projectGrid} role="list">
-                {shown.map((project) => (
+                {shown.map((project, index) => (
                   <article key={project.id} className={styles.projectCard} role="listitem">
                     {/* Project Image */}
                     <div className={styles.cardVisual}>
@@ -272,6 +280,7 @@ export default function ProjectsPage() {
                         sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
                         className={styles.cardImage}
                         quality={80}
+                        loading={index < 3 ? "eager" : "lazy"}
                       />
                       <div className={styles.cardImageOverlay} />
                       <span className={styles.cardVisualLabel}>{project.category}</span>
@@ -295,14 +304,14 @@ export default function ProjectsPage() {
                           <span className={styles.cardSpecVal}>{project.weight}</span>
                         </span>
                       </div>
-                      <Link
-                        href={`/projects/${project.id}`}
+                      <button
+                        onClick={() => openModal(project as any)}
                         className={styles.cardCta}
                         aria-label={`View case study for ${project.title}`}
                       >
                         View Case Study
                         <ChevronRight size={14} aria-hidden="true" />
-                      </Link>
+                      </button>
                     </div>
                   </article>
                 ))}
@@ -356,14 +365,15 @@ export default function ProjectsPage() {
                   </div>
                 ))}
               </div>
-              <Link
-                href={`/projects/${FEATURED.id}`}
+              <button
+                onClick={() => openModal(FEATURED)}
                 className="btn btn--primary btn--lg"
                 id="featured-case-study-cta"
+                style={{ cursor: 'pointer' }}
               >
                 Read Full Case Study
                 <ChevronRight size={18} aria-hidden="true" />
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -374,6 +384,12 @@ export default function ProjectsPage() {
         subtext="Share your requirements with our project team. We'll assess feasibility and provide a detailed technical and commercial proposal."
         primaryCta={{ label: 'Discuss Your Project', href: '/contact' }}
         secondaryCta={{ label: 'View Our Capabilities', href: '/capabilities' }}
+      />
+
+      <ProjectDetailsModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        project={selectedProject}
       />
     </>
   );

@@ -5,10 +5,10 @@ import styles from './StatsStrip.module.css';
 
 const STATS = [
   {
-    number: '26',
+    number: '20',
     suffix: '+',
     label: 'Years Experience',
-    sub: 'Est. 1998',
+    sub: 'Est. 2006',
   },
   {
     number: '50',
@@ -94,7 +94,7 @@ export default function StatsStrip() {
             </span>
           </div>
           <p className={styles.tagline}>
-            Numbers that reflect 26 years of industrial execution.
+            Numbers that reflect 20 years of industrial execution.
           </p>
         </div>
 

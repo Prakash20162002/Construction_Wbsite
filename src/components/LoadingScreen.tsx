@@ -106,7 +106,7 @@ export default function LoadingScreen() {
         <span className={styles.bottomBrand}>BHANDARI ENTERPRISE</span>
         <span className={styles.bottomDivider} />
         <span className={styles.bottomSub} suppressHydrationWarning>
-          EST. 1998 · KONNAGAR, WEST BENGAL
+          EST. 2006 · KONNAGAR, WEST BENGAL
         </span>
       </div>
     </div>

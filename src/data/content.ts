@@ -6,17 +6,17 @@ export const COMPANY = {
   name: 'Bhandari Enterprise',
   tagline: 'Engineering the Future. Building with Precision.',
   shortTagline: 'Steel · Fabrication · Construction',
-  founded: '1998',
+  founded: '2006',
   phone: '+91 99032 56479',
   email: 'gourbhandari68@gmail.com',
   address: '11/A, Criper Road Bye Lane South\nKonnagar, Hooghly\nWest Bengal — 712235, India',
   location: 'Kolkata, West Bengal',
-  cin: 'U45200WB1998PTC022441',
+  cin: 'U45200WB2006PTC022441',
   gst: '19AABCB1234A1Z5',
 };
 
 export const STATS = [
-  { number: '26+', label: 'Years of Excellence' },
+  { number: '20+', label: 'Years of Excellence' },
   { number: '50+', label: 'Projects Completed' },
   { number: '40+', label: 'Industry Clients' },
   { number: '500T', label: 'Steel Fabricated Annually' },
