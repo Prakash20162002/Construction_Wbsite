@@ -55,7 +55,7 @@ export default function Projects() {
         {/* Projects Grid */}
         <div className={`${styles.grid} reveal-group`}>
           {PROJECTS.map((project, i) => {
-            const bgColor = placeholderColors[project.imgPlaceholder] || '#1E3550';
+            const bgColor = placeholderColors[project.category.toLowerCase().split(' ')[0]] || '#1E3550';
             const isFeatured = i === 0;
             return (
               <article

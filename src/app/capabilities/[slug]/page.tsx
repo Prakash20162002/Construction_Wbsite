@@ -115,10 +115,47 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = getService(slug);
-  if (!service) return { title: 'Not Found' };
+  if (!service) return { title: 'Not Found | Bhandari Enterprise' };
+
+  const seoMap: Record<string, { title: string; desc: string; keywords: string[] }> = {
+    'steel-fabrication': {
+      title: 'Structural Steel Fabrication in Kolkata & Hooghly, West Bengal',
+      desc: 'Bhandari Enterprise offers high-precision structural steel fabrication in Konnagar, Hooghly, Kolkata & West Bengal. Over 1,200 MT annual capacity.',
+      keywords: ['steel fabrication Kolkata', 'structural steel fabrication Hooghly West Bengal', 'steel fabricators Howrah', 'Konnagar steel shop', 'industrial steel fabrication']
+    },
+    'structural-erection': {
+      title: 'Structural Steel Erection & PEB Contractors in Jamshedpur & West Bengal',
+      desc: 'Heavy lift structural erection, PEB warehouses, and industrial shed erection services across West Bengal, Jamshedpur, Jharkhand, Paradip, Odisha and Bihar.',
+      keywords: ['steel structure erection West Bengal', 'PEB warehouse Jamshedpur', 'heavy lift erection Kolkata', 'industrial shed construction', 'erection contractors']
+    },
+    'civil-construction': {
+      title: 'Industrial Civil Construction & RCC Foundation, West Bengal & Bihar',
+      desc: 'Professional civil works, concrete piling, heavy machine foundation, vacuum dewatered flooring, and warehouse construction in Kolkata, Hooghly, Gaya and Patna.',
+      keywords: ['industrial civil construction West Bengal', 'RCC foundation contractors Kolkata', 'warehouse floor piling Hooghly', 'Gaya civil works']
+    },
+    'manufacturing': {
+      title: 'Process Pipe Rack & Equipment Skid Manufacturing in Paradip & West Bengal',
+      desc: 'Modular fabrication of pressure vessels, equipment skids, piping manifolds, and chemical plant structures. Serving Jamshedpur, Paradip, and Haldia.',
+      keywords: ['equipment skid fabrication', 'process pipe racks Paradip', 'chemical plant modular structures', 'pressure vessels Kolkata', 'Haldia fabrication']
+    }
+  };
+
+  const seo = seoMap[slug] || {
+    title: `${service.title} Services in West Bengal & Nearby Regions`,
+    desc: `${service.shortDesc} Expert execution across Hooghly, Kolkata, Jharkhand, Odisha and Bihar.`,
+    keywords: [service.title.toLowerCase(), 'industrial construction West Bengal', 'Bhandari Enterprise']
+  };
+
   return {
-    title: `${service.title} — Bhandari Enterprise`,
-    description: service.shortDesc,
+    title: `${seo.title} | Bhandari Enterprise`,
+    description: seo.desc,
+    keywords: seo.keywords,
+    openGraph: {
+      title: `${seo.title} | Bhandari Enterprise`,
+      description: seo.desc,
+      locale: 'en_IN',
+      type: 'website',
+    }
   };
 }
 
@@ -129,6 +166,16 @@ export default async function CapabilityPage({ params }: Props) {
 
   const detail = CAPABILITY_DETAIL[slug];
   const otherServices = SERVICES.filter((s) => s.id !== slug).slice(0, 4);
+
+  // Localized Headings targeting Hooghly, Kolkata, West Bengal, Jamshedpur, Paradip, Gaya etc.
+  const localHeadings: Record<string, string> = {
+    'steel-fabrication': 'Structural Steel Fabrication in Kolkata & Hooghly, West Bengal',
+    'structural-erection': 'Structural Steel Erection & PEB in West Bengal & Jharkhand',
+    'civil-construction': 'Industrial Civil Construction in West Bengal, Bihar & Odisha',
+    'manufacturing': 'Process Skid & Pipe Rack Manufacturing in Paradip & West Bengal',
+  };
+
+  const displayTitle = localHeadings[slug] || service.title;
 
   return (
     <div className={styles.page}>
@@ -149,8 +196,9 @@ export default async function CapabilityPage({ params }: Props) {
             <span className={styles.overlineLine} />
             Industrial Capability
           </span>
-          <h1 className={styles.heroTitle}>{service.title}</h1>
+          <h1 className={styles.heroTitle}>{displayTitle}</h1>
           <p className={styles.heroSub}>{service.shortDesc}</p>
+
 
           <div className={styles.heroActions}>
             <Link href="/contact" className="btn btn--primary btn--lg">
