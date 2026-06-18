@@ -11,6 +11,8 @@ export interface Project {
   location: string;
   year: string;
   image?: string;
+  imageBefore?: string;
+  imageAfter?: string;
   area?: string;
   weight?: string;
   scope?: string;
@@ -163,6 +165,27 @@ export default function ProjectDetailsModal({ isOpen, onClose, project }: Projec
                     </li>
                   ))}
                 </ul>
+              </div>
+            )}
+
+            {/* Before/After Case Study Photos */}
+            {project.imageBefore && project.imageAfter && (
+              <div className={styles.beforeAfterBlock}>
+                <h4 className={styles.blockHeading}>Case Study: Execution Stages</h4>
+                <div className={styles.beforeAfterGrid}>
+                  <div className={styles.beforeAfterCard}>
+                    <span className={styles.beforeAfterBadge}>Initial Stage</span>
+                    <div className={styles.stageImgWrap}>
+                      <img src={project.imageBefore} alt="Initial foundation or fabrication stage" className={styles.stageImg} />
+                    </div>
+                  </div>
+                  <div className={styles.beforeAfterCard}>
+                    <span className={`${styles.beforeAfterBadge} ${styles.afterBadge}`}>Completed Structure</span>
+                    <div className={styles.stageImgWrap}>
+                      <img src={project.imageAfter} alt="Completed erection or installation stage" className={styles.stageImg} />
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
 

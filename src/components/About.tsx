@@ -58,13 +58,23 @@ export default function About() {
               </h2>
             </div>
             <div className={`reveal ${styles.headerText}`}>
-              <p>
-                From our facility in Konnagar, Hooghly, Bhandari Enterprise has built a reputation for quality, reliability, and skilled craftsmanship. Backed by a dedicated team of experienced workers and a commitment to excellence, we provide precision fabrication and engineering solutions for industrial and infrastructure projects across West Bengal. Every project reflects our focus on hard work, attention to detail, and delivering results that our clients can depend on.
-
+              <p style={{ marginBottom: 'var(--space-4)' }}>
+                <strong>Heritage & Foundation (Est. 2006):</strong> Founded by the Bhandari family with a signature fabrication bay in Konnagar, Hooghly, West Bengal, we set out to bridge the gap in regional heavy engineering with precision steel fabrication. Over nearly two decades of dedicated execution, we have stayed committed to high-standard manufacturing and structural safety.
               </p>
-              <a href="#featured-projects" className="btn btn--primary" style={{ marginTop: 'var(--space-6)', alignSelf: 'flex-start' }}>
-                Work With Us
-              </a>
+              <p style={{ marginBottom: 'var(--space-4)' }}>
+                <strong>Scale & Infrastructure:</strong> Today, our operations span a state-of-the-art 18,000 sqm covered manufacturing facility. Equipped with advanced CNC plasma cutters, automated welding equipment, and 50 MT EOT cranes, we carry out massive steel fabrication and processing jobs to support key industrial projects across India.
+              </p>
+              <p style={{ marginBottom: 'var(--space-6)' }}>
+                <strong>Uncompromised Standards:</strong> With a dedicated permanent workforce of over 150 certified engineers, ASME-compliant welders, and site managers, we maintain zero-defect standards. We are proud to be a trusted engineering partner for India’s largest conglomerates including Tata Steel, L&T, and Reliance.
+              </p>
+              <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap' }}>
+                <a href="#featured-projects" className="btn btn--primary">
+                  Work With Us
+                </a>
+                <a href="/about" className="btn btn--secondary">
+                  Read Complete Heritage & Specs
+                </a>
+              </div>
             </div>
           </div>
         </div>

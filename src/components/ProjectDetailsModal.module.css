@@ -464,3 +464,73 @@
   }
 }
 
+.beforeAfterBlock {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.beforeAfterGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.beforeAfterCard {
+  position: relative;
+  background: var(--color-navy-950);
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.beforeAfterBadge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--color-navy-900);
+  border: 1px solid var(--color-border-dark);
+  color: var(--color-navy-200);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 10;
+}
+
+.afterBadge {
+  background: rgba(232, 80, 0, 0.15);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.stageImgWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.5;
+  background: var(--color-navy-900);
+  overflow: hidden;
+}
+
+.stageImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-moderate) var(--ease-out);
+}
+
+.beforeAfterCard:hover .stageImg {
+  transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  .beforeAfterGrid {
+    grid-template-columns: 1fr;
+  }
+}
+

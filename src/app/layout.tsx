@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import Navbar from '@/components/Navbar';
 import LoadingScreen from '@/components/LoadingScreen';
 import ContactPopup from '@/components/ContactPopup';
+import WhatsAppCTA from '@/components/WhatsAppCTA';
 import ScrollRevealObserver from '@/components/ScrollRevealObserver';
 
 
@@ -52,6 +53,7 @@ export default function RootLayout({
         <LoadingScreen />
         <ScrollRevealObserver />
         <ContactPopup />
+        <WhatsAppCTA />
         <a href="#main-content" className="sr-only">Skip to main content</a>
         <Navbar />
         <main id="main-content">
